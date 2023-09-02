@@ -1,42 +1,335 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,html [type=button],[type=reset],[type=submit]{-webkit-appearance:button}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}template{display:none}[hidden]{display:none}
+
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+.clearfix:after {visibility: hidden; display: block; font-size: 0; content: ''; clear: both; height: 0; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
+
+html {
+  font-size: 16px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+body, h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.App {
+  height: 350vh;
+  width: 100vw;
+  background-color: #001E31;
+}
+
+header {
+  width: 100vw;
+  height: 8vh;
+  background-color:#0B293C;
+  display: flex;
+  position: fixed;
+}
+
+.headerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3.5rem;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-right: 0.5rem;
+  cursor: pointer;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logoWord {
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 0.025rem;
+  font-size: 1.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.topNavBtns {
+  color: white;
 }
 
-.card {
-  padding: 2em;
+.topNavBtns button {
+  padding: 1rem 1.75rem;
+  border-radius: 2rem;
+  border: none;
+  letter-spacing: 0.025rem;
+  cursor: pointer;
+  font-weight: 600;
 }
 
-.read-the-docs {
-  color: #888;
+.signUpBtn {
+  background-color: #001E31;
+  margin-right: 1rem;
+  color: white; 
 }
+
+.logInBtn{
+  background-color: #D3CFE6;
+  color: #001E31;
+}
+
+.sidebar {
+  width: 400px;
+  height: 90vh;
+  background-color: #C2EDD8;
+  position: fixed;
+  top: 8vh;
+  z-index: 1;
+  padding: 0 3.75rem;
+  padding-top: 3rem;
+  color: #001E31;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2.5rem;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 1.25rem;
+  padding-bottom: 0.75rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+.sidebar label {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar input {
+  padding: 1rem 0 1rem 0.5rem;
+  background-color: #001E31;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+/*
+input[type="number"] {
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+}
+
+This code is to hide the default arrows in the number input. When hidding, you can use your own arrows from font-awesome.
+*/
+
+select {
+  padding: 1rem 0 1rem 0.5rem;
+  background-color: #001E31;
+  border: none;
+  color: white;
+  border-radius: 6px;
+}
+
+.sidebarNav button {
+  background-color: #D3CFE6;
+  color: #001E31;
+  border: none;
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.025rem;
+  position: relative;
+  z-index: 15;
+  font-weight: 600;
+}
+
+.sidebarImg {
+  position: absolute;
+  z-index: 10;
+  bottom: 7.5vh;
+  left: -3%;
+  transform: rotate(5deg);
+  width: 105%;
+}
+
+.playlistContainer  {
+  padding-top: 13vh;
+  margin-left: 350px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0.25%;
+  z-index: 5;
+  width: 400px;
+  padding: 0 3.75rem;
+  font-size: 0.7rem;
+  color: #001E31;
+}
+
+.juno {
+  font-size: 0.5rem;
+}
+
+.copyright {
+  font-size: 0.65rem;
+}
+
+.podcastContainer {
+  margin: 1.5rem auto;
+  background-color: #0B293C;
+  border-radius: 15px;
+  display: flex;
+  padding: 1.5rem;
+  width: 1000px;
+  cursor: pointer;
+}
+
+.podcastCoverContainer {
+  height: 200px;
+  width: 200px;
+  border-radius: 10px;
+}
+
+.podcastCover {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.podcastInfoContainer {
+  height: 200px;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 2rem;
+  color: rgb(226, 226, 226);
+}
+
+.podcastInfoTop {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.podcastInfoTopLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playBtn {
+  background-color: #C2EDD8;
+  border: none;
+  color: #001E31;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  margin-right: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.podcastTitle {
+  padding-right: 1rem;
+  letter-spacing: 0.025rem;
+  
+}
+
+.podcastAuthor {
+  color: grey;
+  font-size: 0.9rem;
+}
+
+.podcastDescription {
+  color: rgb(189, 189, 189);
+  padding-top: 0.25rem;
+  width: 90%;
+}
+
+.podcastLength {
+  display: flex;
+  padding-top: 1rem;
+  color: grey;
+  font-size: 0.9rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+.trashIcon {
+  align-self: flex-start;
+  color: #C2EDD8;
+  cursor: pointer;
+}
+
+.playlistHeader {
+  margin: 0 auto;
+  display: flex;
+  width: 1000px;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.playlistHeader h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 0.025rem;
+  margin-left: 2rem;
+}
+
+.savePlaylistContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.favouriteIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #C2EDD8;
+  margin-left: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #001223;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+
+
+
