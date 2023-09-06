@@ -1,7 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import './App.css'
 import { Client } from 'podcast-api';
+import Header from './components/Header';
+import SideBar from './components/SideBar';
+import Playlist from './components/Playlist';
+import Footer from './components/Footer';
+import './App.css'
 
 function App() {
 
@@ -38,7 +42,7 @@ function App() {
       }).catch((error) => {
           console.log(error);
       });
-    },[] ) // We want the API call when user clicks on the submit button
+    },[] ) // We want the API call when user clicks on the submit button (maybe a dependency array situation)
       
     // have our form and in the select we will a useState, that state will update the value and that value will be placed in the query
       const handleWalkDurationChange = (event) => {
@@ -47,22 +51,18 @@ function App() {
 
     return (
       <>
-      <label htmlFor='walkTime'>How long is your walk?</label>
-       {/* make it so the user cannot put a negative number */}
-      <input type='number' id='walkTime' value={walkDuration} onChange={()=>{handleWalkDurationChange}}>
-
-      </input>
-      <ul>
-        {podcasts.map((podcast) => {
-          return(
-          <li key={podcast.id}>
-            <h3>{podcast.title_original}</h3>
-          </li>)
-        })}
-        {console.log(podcasts)}
-      </ul>
+        <div className="App">
+            <Header />
+            <SideBar 
+              walkDuration={walkDuration} 
+              handleWalkDurationChange={handleWalkDurationChange}
+            />
+            <Playlist podcasts={podcasts}
+            />
+            <Footer />
+      </div>
       </>
     )
 }
 
-export default App
+export default App;
