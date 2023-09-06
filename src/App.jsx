@@ -57,7 +57,8 @@ function App() {
               walkDuration={walkDuration} 
               handleWalkDurationChange={handleWalkDurationChange}
             />
-            <Playlist podcasts={podcasts}/>
+            <Playlist podcasts={podcasts}
+            />
             <Footer />
       </div>
       </>

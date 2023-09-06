@@ -14,6 +14,12 @@ const SideBar = ({walkDuration, handleWalkDurationChange}) => {
                     {/* make it so the user cannot put a negative number */}
                     <input type='number' id='walkTime' value={walkDuration} onChange={()=>handleWalkDurationChange}>
                     </input>
+                    <select>
+                        <option value="">Arts</option>
+                        <option value="">History</option>
+                        <option value="">Comedy</option>
+                    </select>
+                    <button type="submit">Get List</button>
                 </div>
                 <img className="sidebarImg" src={sidebarImg}></img>
             </div>

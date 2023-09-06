@@ -1,4 +1,6 @@
-const Playlist = ({podcasts}) => {
+import Podcast from "./Podcast";
+
+const Playlist = ({podcasts, podcast}) => {
 
     return (
          <div className="playlistContainer">
@@ -10,34 +12,13 @@ const Playlist = ({podcasts}) => {
                 </div>
             </div>  
             <ul>
-            {podcasts.map((podcast) => {
-            return(
-            <li key={podcast.id} className="podcastContainer">
-                <div className="podcastCoverContainer">
-                    /*thumbnail goes here*/
-                </div>
-                <div className="podcastInfoContainer">
-                    <div className="podcastInfoTop">
-                        <div className="podcastInfoTopLeft">
-                        <div className="playBtnContainer">
-                            <i className="fa-solid fa-play playBtn"></i>
-                        </div>
-                   
-                            <div>
-                                <h3 className="podcastTitle">{podcast.title_original}</h3>
-                                /*podcast author*/
-                            </div>
-                        </div>
-                        <i className="fa-solid fa-trash-can trashIcon"></i>
-                    </div>
-                    /*podcast podcast description*/
-                    /*podcast podcast length*/
-                </div>
-                
-            </li>)
-            })}
-            {console.log(podcasts)}
-        </ul>
+                {podcasts.map((podcast) => {
+                    return(
+                        <Podcast podcast={podcast}/>
+                    )
+                    })}
+                {console.log(podcasts)}
+            </ul>
         </div>
     )
 }
