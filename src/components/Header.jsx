@@ -10,7 +10,7 @@ const Header = () => {
                     <div>
                         <img className="logo" src={strideCastLogo}></img>
                     </div>
-                    <p class="logoWord">StrideCast</p>
+                    <p className="logoWord">StrideCast</p>
                 </div>
                 <div className="topNavBtns">
                     <button className="signUpBtn">Sign up</button>
