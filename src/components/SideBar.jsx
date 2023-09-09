@@ -26,7 +26,9 @@ const SideBar = ({
                         {/* revisit if we want input type=text instead of number */}
                         <input type='number' id='walkTime' value={walkDuration} onChange={handleWalkDurationChange} required>
                         </input>
-                        <select value={selectedGenre} onChange={handleSelectedGenreChange}>
+                        <label htmlFor="selectedGenre">Select your genre</label>
+                        <select value={selectedGenre} id="selectedGenre" onChange={handleSelectedGenreChange}>
+                            {/* there must be more dry way to achieve getting all the option values. do we call the genre API, set parameters, and map the results? */}
                             <option value disabled>Choose a genre</option>
                             <option value="144">Personal Finance</option>
                             <option value="93">Business</option>
@@ -56,7 +58,7 @@ const SideBar = ({
                         <button type="submit" onClick={handleSubmit}>Get List</button>
                     </form>
                 </div>
-                <img className="sidebarImg" src={sidebarImg}></img>
+                {/* <img className="sidebarImg" src={sidebarImg}></img> */}
             </div>
         </>
 

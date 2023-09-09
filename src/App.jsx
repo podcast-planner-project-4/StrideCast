@@ -103,9 +103,9 @@ function App() {
               handleSubmit={handleSubmit}
             />
             {
-              landingPage ? <LandingPage /> : <Playlist podcasts={podcasts}/>
+              landingPage ? <LandingPage /> : 
+              <Playlist podcasts={podcasts}/>
             }
-
             <Footer />
       </div>
       </>
