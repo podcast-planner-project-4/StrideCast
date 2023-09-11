@@ -388,5 +388,48 @@ h2 {
   100% { transform: rotate(360deg); }
 }
 
+.playlistNameShuffle {
+  display: flex;
+  align-items: center;
+}
+
+.faShuffleBtn {
+  background-color: #001E31;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.faShuffleIcon {
+  color: #C2EDD8;
+  font-size: 1.5rem;
+}
+
+audio {
+  all: revert;
+  width: 90%;
+  height: 2rem;
+  position: relative;
+  z-index: 0;
+}
+
+.errorMsg {
+  width: calc(100vw - 400px);
+  margin-left: 400px;
+  margin-top: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
+  position: fixed;
+  font-size: 1rem;
+  padding: 3.2rem 0 0 3.2rem;
+}
+
+.errorBorder{
+  border: 3px solid rgb(252, 3, 3);
+  border-radius: 8px;
+}
 
 

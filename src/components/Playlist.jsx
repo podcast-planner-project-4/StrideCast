@@ -1,11 +1,16 @@
 import Podcast from "./Podcast";
 
-const Playlist = ({podcasts, podcast}) => {
+const Playlist = ({podcasts}) => {
 
     return (
          <div className="playlistContainer">
             <div className="playlistHeader">
-                <h2>Top Picks</h2>
+                <div className="playlistNameShuffle">
+                <h2>Top picks</h2>
+                    <button className="faShuffleBtn">
+                        <i className="fa-solid fa-shuffle faShuffleIcon"></i>
+                    </button>
+                </div>
                 <div className="savePlaylistContainer">
                     <p>Save playlist</p>
                     <i className="fa-regular fa-heart favouriteIcon"></i>
