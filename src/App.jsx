@@ -6,21 +6,23 @@ import LandingPage from "./components/LandingPage";
 import SideBar from "./components/SideBar";
 import Playlist from "./components/Playlist";
 import Footer from "./components/Footer";
+import APILoadingState from "./components/APILoadingState";
 import "./App.css";
 
 function App() {
   const [podcasts, setPodcasts] = useState([]);
-  const [walkDuration, setWalkDuration] = useState(0); // maybe, we want to set this to 0?
+  const [walkDuration, setWalkDuration] = useState(""); // maybe, we want to set this to 0?
   const [selectedGenre, setSelectedGenre] = useState("");
   const [playlistNameInput, setPlaylistNameInput] = useState("");
   const [landingPage, setLandingPage] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    setIsLoading(true);
     const apiKey = import.meta.env.VITE_API_KEY;
     const baseUrl = "https://listen-api.listennotes.com/api/v2";
-
+    const client = Client({ apiKey });
     const newUrl = new URL(baseUrl);
     newUrl.pathname = "/search";
 
@@ -40,8 +42,8 @@ function App() {
         sort_by_date: 0,
         type: "episode",
         offset: 0,
-        len_min: walkDuration,
-        len_max: walkDuration + 5,
+        len_min: walkDuration - 1,
+        len_max: walkDuration,
         genre_ids: selectedGenre,
         published_before: 1580172454000,
         published_after: 0,
@@ -53,10 +55,12 @@ function App() {
       })
       .then((response) => {
         console.log(response.data);
+        setIsLoading(false);
         setPodcasts(response.data.results);
       })
       .catch((error) => {
         console.log(error);
+        setIsLoading(false);
       });
 
     setLandingPage(false);
@@ -79,7 +83,6 @@ function App() {
   const handlePlaylistNameInputChange = (event) => {
     setPlaylistNameInput(event.target.value);
   };
-
   return (
     <>
       <div className="App">
@@ -93,7 +96,13 @@ function App() {
           handlePlaylistNameInputChange={handlePlaylistNameInputChange}
           handleSubmit={handleSubmit}
         />
-        {landingPage ? <LandingPage /> : <Playlist podcasts={podcasts} />}
+        {landingPage ? (
+          <LandingPage />
+        ) : isLoading ? (
+          <APILoadingState />
+        ) : (
+          <Playlist podcasts={podcasts} playlistNameInput={playlistNameInput} />
+        )}
 
         <Footer />
       </div>

@@ -33,6 +33,7 @@ header {
   background-color:#0B293C;
   display: flex;
   position: fixed;
+  z-index: 5;
 }
 
 .headerContainer {
@@ -94,7 +95,7 @@ header {
 
 .sidebar {
   width: 400px;
-  height: 90vh;
+  height: 92vh;
   background-color: #C2EDD8;
   position: fixed;
   top: 8vh;
@@ -127,7 +128,7 @@ h1 {
   border: none;
   color: white;
   border-radius: 6px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 /*
@@ -150,6 +151,7 @@ select {
   border: none;
   color: white;
   border-radius: 6px;
+  margin-bottom: 0.5rem;
 }
 
 .sidebarNav button {
@@ -159,8 +161,7 @@ select {
   padding: 1rem 1.25rem;
   border-radius: 6px;
   cursor: pointer;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
+  margin-top: 1.5rem;
   letter-spacing: 0.025rem;
   position: relative;
   z-index: 15;
@@ -170,7 +171,7 @@ select {
 .sidebarImg {
   position: absolute;
   z-index: 10;
-  bottom: 7.5vh;
+  bottom: 8vh;
   left: -3%;
   transform: rotate(5deg);
   width: 105%;
@@ -183,20 +184,18 @@ select {
 
 footer {
   position: fixed;
-  bottom: 0.25%;
+  bottom: 1%;
   z-index: 5;
   width: 400px;
   padding: 0 3.75rem;
   font-size: 0.7rem;
   color: #001E31;
+
 }
 
-.juno {
-  font-size: 0.5rem;
-}
-
-.copyright {
+.juno, .copyright {
   font-size: 0.65rem;
+  padding-bottom: 0.15rem;
 }
 
 .podcastContainer {
@@ -242,6 +241,10 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.playBtnContainer a {
+  text-decoration: none;
 }
 
 .playBtn {
@@ -329,10 +332,104 @@ h2 {
   font-size: 1.25rem;
 }
 
-.welcome { 
-  font-size: 100px;
-  color: white;
+.landingPageContainer {
+  margin-left: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: fixed;
 }
 
+.landingPageImg {
+  width: 60%;
+}
+
+.welcome {
+  font-size: 3rem;
+  padding: 1rem 0;
+}
+
+.info {
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 0 5rem;
+}
+
+.spinnerContainer {
+  width: calc(100vw - 400px);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8vh;
+  margin-left: 400px;
+  position: fixed;
+}
+
+.spinner {
+  border: 25px solid black;
+  border-radius: 50%;
+  border-top: 25px solid #C2EDD8;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+}
+
+.loadingText {
+  font-size: 1rem;
+  padding-top: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.playlistNameShuffle {
+  display: flex;
+  align-items: center;
+}
+
+.faShuffleBtn {
+  background-color: #001E31;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.faShuffleIcon {
+  color: #C2EDD8;
+  font-size: 1.5rem;
+}
+
+audio {
+  all: revert;
+  width: 90%;
+  height: 2rem;
+  position: relative;
+  z-index: 0;
+}
+
+.errorMsg {
+  width: calc(100vw - 400px);
+  margin-left: 400px;
+  margin-top: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
+  position: fixed;
+  font-size: 1rem;
+  padding: 3.2rem 0 0 3.2rem;
+}
+
+.errorBorder{
+  border: 3px solid rgb(252, 3, 3);
+  border-radius: 8px;
+}
 
 
