@@ -65,7 +65,6 @@ function App() {
 
     useEffect( () => { 
       
-
     },[walkDuration, selectedGenre, handleSubmit] )
       
      // We want the API call when user clicks on the submit button (maybe a dependency array situation)
@@ -103,7 +102,8 @@ function App() {
               handleSubmit={handleSubmit}
             />
             {
-              landingPage ? <LandingPage /> : <Playlist podcasts={podcasts}/>
+              landingPage ? <LandingPage /> : 
+              <Playlist podcasts={podcasts}/>
             }
 
             <Footer />
