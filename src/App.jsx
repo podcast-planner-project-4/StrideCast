@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Client } from 'podcast-api';
 import Header from './components/Header';
 import LandingPage from './components/LandingPage'
+import ApiLoadingState from './components/ApiLoadingState';
 import SideBar from './components/SideBar';
 import Playlist from './components/Playlist';
 import Footer from './components/Footer';
@@ -15,9 +16,12 @@ function App() {
       const [selectedGenre, setSelectedGenre] = useState('');
       const [playlistNameInput, setPlaylistNameInput] = useState('');
       const [landingPage, setLandingPage] = useState(true);
+      const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = (event) => { 
       event.preventDefault();
+
+      setIsLoading(true);
 
       const apiKey = import.meta.env.VITE_API_KEY;
       const baseUrl = "https://listen-api.listennotes.com/api/v2";
@@ -56,8 +60,10 @@ function App() {
       }).then((response) => {
           console.log(response.data);
           setPodcasts(response.data.results);
+          setIsLoading(false);
       }).catch((error) => {
           console.log(error);
+          setIsLoading(false);
       });
 
       setLandingPage(false);
@@ -70,7 +76,6 @@ function App() {
      // We want the API call when user clicks on the submit button (maybe a dependency array situation)
       
     // have our form and in the select we will a useState, that state will update the value and that value will be placed in the query
-    
     
     
     const handleWalkDurationChange = (event) => {
@@ -103,6 +108,7 @@ function App() {
             />
             {
               landingPage ? <LandingPage /> : 
+              isLoading ? <ApiLoadingState /> :
               <Playlist podcasts={podcasts}/>
             }
 
