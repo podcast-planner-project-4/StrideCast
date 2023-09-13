@@ -7,6 +7,7 @@ const SideBar = ({
   playlistNameInput,
   handlePlaylistNameInputChange,
   handleSubmit,
+  errorMessage
 }) => {
 
   const handleKeyDown = (event) => {
@@ -86,6 +87,7 @@ const SideBar = ({
               />
             <button type="submit">Get List</button>
           </form>
+          {errorMessage && <p>{errorMessage}</p>}
         </div>
         {/* <img className="sidebarImg" src={sidebarImg}></img> */}
       </div>
