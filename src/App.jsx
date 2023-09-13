@@ -72,6 +72,11 @@ function App() {
 
   // have our form and in the select we will a useState, that state will update the value and that value will be placed in the query
 
+  // const handleWalkDurationChange = (event) => {
+  //   const inputValue = event.target.value;
+  //   if (/^\d+$/.test(inputValue) || inputValue === "") {
+  //     setWalkDuration(inputValue);
+  //   }
   const handleWalkDurationChange = (event) => {
     setWalkDuration(event.target.value);
   };
