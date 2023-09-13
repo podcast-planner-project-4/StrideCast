@@ -16,15 +16,22 @@ function App() {
   const [playlistNameInput, setPlaylistNameInput] = useState("");
   const [landingPage, setLandingPage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);
+    setErrorMessage("");
     const apiKey = import.meta.env.VITE_API_KEY;
     const baseUrl = "https://listen-api.listennotes.com/api/v2";
     const client = Client({ apiKey });
     const newUrl = new URL(baseUrl);
     newUrl.pathname = "/search";
+
+    if(walkDuration > 720) {
+      alert("Select Less Time")
+      return;
+    }
 
     // client.fetchPodcastGenres({
     //   top_level_only: 1,
@@ -54,13 +61,19 @@ function App() {
         page_size: 10,
       })
       .then((response) => {
-        console.log(response.data);
-        setIsLoading(false);
+          setIsLoading(false);
+        if(response.data.results.length === 0){
+          setErrorMessage("Sorry! No Podcast Found")
+        }else {
+
         setPodcasts(response.data.results);
+
+      }
       })
       .catch((error) => {
         console.log(error);
         setIsLoading(false);
+        setErrorMessage("Error retrieving Podcast, Please try again later")
       });
 
     setLandingPage(false);
@@ -72,6 +85,11 @@ function App() {
 
   // have our form and in the select we will a useState, that state will update the value and that value will be placed in the query
 
+  // const handleWalkDurationChange = (event) => {
+  //   const inputValue = event.target.value;
+  //   if (/^\d+$/.test(inputValue) || inputValue === "") {
+  //     setWalkDuration(inputValue);
+  //   }
   const handleWalkDurationChange = (event) => {
     setWalkDuration(event.target.value);
   };
@@ -95,6 +113,7 @@ function App() {
           playlistNameInput={playlistNameInput}
           handlePlaylistNameInputChange={handlePlaylistNameInputChange}
           handleSubmit={handleSubmit}
+          errorMessage={errorMessage}
         />
         {landingPage ? (
           <LandingPage />
