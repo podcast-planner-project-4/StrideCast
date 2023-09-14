@@ -1,12 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Client } from "podcast-api";
+import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import SideBar from "./components/SideBar";
 import Playlist from "./components/Playlist";
 import Footer from "./components/Footer";
 import APILoadingState from "./components/APILoadingState";
+import SignUp from "./components/SignUp";
+import LogIn from "./components/LogIn";
+import ErrorPage from "./components/ErrorPage";
 import "./App.css";
 
 function App() {
@@ -102,26 +106,42 @@ function App() {
   return (
     <>
       <div className="App">
-        <Header />
-        <SideBar
-          walkDuration={walkDuration}
-          handleWalkDurationChange={handleWalkDurationChange}
-          selectedGenre={selectedGenre}
-          handleSelectedGenreChange={handleSelectedGenreChange}
-          playlistNameInput={playlistNameInput}
-          handlePlaylistNameInputChange={handlePlaylistNameInputChange}
-          handleSubmit={handleSubmit}
-          errorMessage={errorMessage}
-        />
-        {landingPage ? (
-          <LandingPage />
-        ) : isLoading ? (
-          <APILoadingState />
-        ) : (
-          <Playlist podcasts={podcasts} playlistNameInput={playlistNameInput} />
-        )}
-
-        <Footer />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Header />
+                <SideBar
+                  walkDuration={walkDuration}
+                  handleWalkDurationChange={handleWalkDurationChange}
+                  selectedGenre={selectedGenre}
+                  handleSelectedGenreChange={handleSelectedGenreChange}
+                  playlistNameInput={playlistNameInput}
+                  handlePlaylistNameInputChange={handlePlaylistNameInputChange}
+                  handleSubmit={handleSubmit}
+                  errorMessage={errorMessage}
+                />
+                {landingPage ? (
+                  <LandingPage />
+                ) : isLoading ? (
+                  <APILoadingState />
+                ) : errorMessage ? (
+                  <p className="errorMsg">{errorMessage}</p>
+                ) : (
+                  <Playlist
+                    podcasts={podcasts}
+                    playlistNameInput={playlistNameInput}
+                  />
+                )}
+                <Footer />
+              </>
+            }
+          ></Route>
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
       </div>
     </>
   );
