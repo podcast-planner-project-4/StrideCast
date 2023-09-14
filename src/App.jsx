@@ -1,12 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Client } from "podcast-api";
+import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import SideBar from "./components/SideBar";
 import Playlist from "./components/Playlist";
 import Footer from "./components/Footer";
 import APILoadingState from "./components/APILoadingState";
+import SignUp from "./components/SignUp";
+import LogIn from "./components/LogIn";
+import ErrorPage from "./components/ErrorPage";
 import "./App.css";
 
 function App() {
@@ -16,15 +20,22 @@ function App() {
   const [playlistNameInput, setPlaylistNameInput] = useState("");
   const [landingPage, setLandingPage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);
+    setErrorMessage("");
     const apiKey = import.meta.env.VITE_API_KEY;
     const baseUrl = "https://listen-api.listennotes.com/api/v2";
     const client = Client({ apiKey });
     const newUrl = new URL(baseUrl);
     newUrl.pathname = "/search";
+
+    if (walkDuration > 720) {
+      alert("Select Less Time");
+      return;
+    }
 
     // client.fetchPodcastGenres({
     //   top_level_only: 1,
@@ -54,13 +65,17 @@ function App() {
         page_size: 10,
       })
       .then((response) => {
-        console.log(response.data);
         setIsLoading(false);
-        setPodcasts(response.data.results);
+        if (response.data.results.length === 0) {
+          setErrorMessage("Sorry! No Podcast Found");
+        } else {
+          setPodcasts(response.data.results);
+        }
       })
       .catch((error) => {
         console.log(error);
         setIsLoading(false);
+        setErrorMessage("Error retrieving Podcast, Please try again later");
       });
 
     setLandingPage(false);
@@ -72,6 +87,11 @@ function App() {
 
   // have our form and in the select we will a useState, that state will update the value and that value will be placed in the query
 
+  // const handleWalkDurationChange = (event) => {
+  //   const inputValue = event.target.value;
+  //   if (/^\d+$/.test(inputValue) || inputValue === "") {
+  //     setWalkDuration(inputValue);
+  //   }
   const handleWalkDurationChange = (event) => {
     setWalkDuration(event.target.value);
   };
@@ -86,25 +106,42 @@ function App() {
   return (
     <>
       <div className="App">
-        <Header />
-        <SideBar
-          walkDuration={walkDuration}
-          handleWalkDurationChange={handleWalkDurationChange}
-          selectedGenre={selectedGenre}
-          handleSelectedGenreChange={handleSelectedGenreChange}
-          playlistNameInput={playlistNameInput}
-          handlePlaylistNameInputChange={handlePlaylistNameInputChange}
-          handleSubmit={handleSubmit}
-        />
-        {landingPage ? (
-          <LandingPage />
-        ) : isLoading ? (
-          <APILoadingState />
-        ) : (
-          <Playlist podcasts={podcasts} playlistNameInput={playlistNameInput} />
-        )}
-
-        <Footer />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Header />
+                <SideBar
+                  walkDuration={walkDuration}
+                  handleWalkDurationChange={handleWalkDurationChange}
+                  selectedGenre={selectedGenre}
+                  handleSelectedGenreChange={handleSelectedGenreChange}
+                  playlistNameInput={playlistNameInput}
+                  handlePlaylistNameInputChange={handlePlaylistNameInputChange}
+                  handleSubmit={handleSubmit}
+                  errorMessage={errorMessage}
+                />
+                {landingPage ? (
+                  <LandingPage />
+                ) : isLoading ? (
+                  <APILoadingState />
+                ) : errorMessage ? (
+                  <p className="errorMsg">{errorMessage}</p>
+                ) : (
+                  <Playlist
+                    podcasts={podcasts}
+                    playlistNameInput={playlistNameInput}
+                  />
+                )}
+                <Footer />
+              </>
+            }
+          ></Route>
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
       </div>
     </>
   );

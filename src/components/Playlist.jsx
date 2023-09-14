@@ -1,4 +1,5 @@
 import Podcast from "./Podcast";
+import { Link } from "react-router-dom";
 
 const Playlist = ({ podcasts, playlistNameInput }) => {
   return (
@@ -11,8 +12,9 @@ const Playlist = ({ podcasts, playlistNameInput }) => {
           </button>
         </div>
         <div className="savePlaylistContainer">
-          <p>Save playlist</p>
-          <i className="fa-regular fa-heart favouriteIcon"></i>
+          <Link to="/signup" className="savePlaylistLink">
+            <i className="fa-regular fa-heart favouriteIcon"></i>
+          </Link>
         </div>
       </div>
       <ul>

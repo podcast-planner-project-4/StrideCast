@@ -1,5 +1,3 @@
-import sidebarImg from "../assets/sidebarImg.png";
-
 const SideBar = ({
   walkDuration,
   handleWalkDurationChange,
@@ -9,6 +7,15 @@ const SideBar = ({
   handlePlaylistNameInputChange,
   handleSubmit,
 }) => {
+  const handleKeyDown = (event) => {
+    const keyCode = event.which || event.keyCode;
+    // Allow digits and backspace
+    if ((keyCode < 48 || keyCode > 57) && keyCode !== 8) {
+      event.preventDefault(); // Prevent non-digit input
+    }
+  };
+  // Can We simplify this code using the input
+
   return (
     <>
       <div className="sidebar wrapper">
@@ -24,10 +31,13 @@ const SideBar = ({
             {/* revisit if we want input type=text instead of number */}
             <input
               type="number"
+              min="1"
               id="walkTime"
               value={walkDuration}
               onChange={handleWalkDurationChange}
               required
+              pattern="\d+"
+              onKeyDown={handleKeyDown}
               placeholder="Time in minutes"
             ></input>
             <label htmlFor="selectedGenre">Select your genre</label>
@@ -35,9 +45,10 @@ const SideBar = ({
               value={selectedGenre}
               id="selectedGenre"
               onChange={handleSelectedGenreChange}
+              required
             >
               {/* there must be more dry way to achieve getting all the option values. do we call the genre API, set parameters, and map the results? */}
-              <option value disabled>
+              <option value="" disabled defaultValue>
                 Choose a genre
               </option>
               <option value="144">Personal Finance</option>
@@ -70,7 +81,7 @@ const SideBar = ({
               value={playlistNameInput}
               onChange={handlePlaylistNameInputChange}
               required
-            ></input>
+            />
             <button type="submit">Get List</button>
           </form>
         </div>

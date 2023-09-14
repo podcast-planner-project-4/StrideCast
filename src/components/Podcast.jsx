@@ -21,7 +21,7 @@ const Podcast = ({ podcast }) => {
               <p className="podcastAuthor">{podcast.publisher_original}</p>
             </div>
           </div>
-          <i className="fa-solid fa-trash-can trashIcon"></i>
+          <i class="fa-solid fa-bars faDragIcon"></i>
         </div>
         <p className="podcastDescription">{trimmedDesc}</p>
         <audio controls>
