@@ -24,6 +24,7 @@ const SideBar = ({
             {/* revisit if we want input type=text instead of number */}
             <input
               type="number"
+              min="1"
               id="walkTime"
               value={walkDuration}
               onChange={handleWalkDurationChange}

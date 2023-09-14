@@ -26,6 +26,11 @@ function App() {
     const newUrl = new URL(baseUrl);
     newUrl.pathname = "/search";
 
+    if (walkDuration > 720) {
+      alert("Please select a shorter time");
+      return;
+    }
+
     // client.fetchPodcastGenres({
     //   top_level_only: 1,
 
@@ -54,9 +59,16 @@ function App() {
         page_size: 10,
       })
       .then((response) => {
-        console.log(response.data);
-        setIsLoading(false);
-        setPodcasts(response.data.results);
+        if (response.data.results.length === 0) {
+          alert(
+            "No podcasts found. Try changing walkDuration or selectedGenre"
+          );
+          setIsLoading(false);
+        } else {
+          console.log(response.data);
+          setIsLoading(false);
+          setPodcasts(response.data.results);
+        }
       })
       .catch((error) => {
         console.log(error);
