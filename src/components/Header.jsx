@@ -14,10 +14,10 @@ const Header = () => {
           </div>
           <div className="topNavBtns">
             <button className="signUpBtn">
-              <Link to="/signup">Sign up</Link>
+              <Link to="/signup" className="signUpLink">Sign up</Link>
             </button>
             <button className="logInBtn">
-              <Link to="/login">Log in</Link>
+              <Link to="/login" className="logInLink">Log in</Link>
             </button>
           </div>
         </div>

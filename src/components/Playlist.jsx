@@ -12,7 +12,7 @@ const Playlist = ({ podcasts, playlistNameInput }) => {
           </button>
         </div>
         <div className="savePlaylistContainer">
-          <Link to="/signup">
+          <Link to="/signup" className="savePlaylistLink">
             <i className="fa-regular fa-heart favouriteIcon"></i>
           </Link>
         </div>
