@@ -6,7 +6,7 @@ const LandingPage = () => {
         <div className="landingPageContainer">
             <img className="landingPageImg" src={strideCastLogo}></img>
             <h1 className='welcome'>Welcome to StrideCast</h1>
-            <p className="info">Calvin what should we put here? Probs want something catchy and informative about the product.</p>
+            <p className="info">[PROJECT IN DEVELOPMENT...]</p>
         </div>
     )
 }

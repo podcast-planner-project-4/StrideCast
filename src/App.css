@@ -131,7 +131,6 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
-/*
 input[type="number"] {
   -webkit-appearance: textfield;
      -moz-appearance: textfield;
@@ -142,7 +141,7 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 
-This code is to hide the default arrows in the number input. When hidding, you can use your own arrows from font-awesome.
+/*This code is to hide the default arrows in the number input. When hidding, you can use your own arrows from font-awesome.
 */
 
 select {
