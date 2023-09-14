@@ -1,6 +1,16 @@
+import strideCastLogo from "../assets/strideCastLogo.png";
+
 function SignUp() {
   return (
     <div className="formPage">
+      <div className="logInLogoContainer">
+        <div className="logoContainer">
+            <div>
+              <img className="logo" src={strideCastLogo}></img>
+            </div>
+            <p className="logoWord">StrideCast</p>
+        </div>
+      </div>
       <div className="formContainer">
         <h2>Sign up</h2>
         <form>

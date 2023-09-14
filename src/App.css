@@ -447,9 +447,10 @@ audio {
 
 .formContainer {
   width: 450px;
-  padding: 2rem 2rem;
+  padding: 3rem 2rem;
   border-radius: 6px;
   background-color: #0B293C;
+  margin-top: 5rem;
 }
 
 .formContainer h2 {
@@ -466,7 +467,7 @@ form {
 form input {
   border-radius: 4px;
   border: none;
-  padding: 1.2rem 0.5rem;
+  padding: 1.2rem 0.8rem;
   background-color: #001E31;
   color: white;
 }
@@ -546,4 +547,18 @@ form button {
   color: grey;
 }
 
+.logInFormBtn {
+  margin-top: 1rem;
+}
+
+.logInLogoContainer {
+  height: 8vh;
+  width: 100vw;
+  background-color: #0B293C;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  padding: 0 3.5rem;
+}
 
