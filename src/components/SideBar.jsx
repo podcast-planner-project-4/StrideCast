@@ -1,4 +1,3 @@
-
 const SideBar = ({
   walkDuration,
   handleWalkDurationChange,
@@ -7,9 +6,7 @@ const SideBar = ({
   playlistNameInput,
   handlePlaylistNameInputChange,
   handleSubmit,
-  errorMessage
 }) => {
-
   const handleKeyDown = (event) => {
     const keyCode = event.which || event.keyCode;
     // Allow digits and backspace
@@ -34,13 +31,13 @@ const SideBar = ({
             {/* revisit if we want input type=text instead of number */}
             <input
               type="number"
+              min="1"
               id="walkTime"
               value={walkDuration}
               onChange={handleWalkDurationChange}
               required
               pattern="\d+"
-              min="1"
-              onKeyDown = {handleKeyDown}
+              onKeyDown={handleKeyDown}
               placeholder="Time in minutes"
             ></input>
             <label htmlFor="selectedGenre">Select your genre</label>
@@ -84,10 +81,9 @@ const SideBar = ({
               value={playlistNameInput}
               onChange={handlePlaylistNameInputChange}
               required
-              />
+            />
             <button type="submit">Get List</button>
           </form>
-          {errorMessage && <p>{errorMessage}</p>}
         </div>
         {/* <img className="sidebarImg" src={sidebarImg}></img> */}
       </div>
