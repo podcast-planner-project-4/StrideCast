@@ -6,19 +6,15 @@ const Header = () => {
     <>
       <header>
         <div className="wrapper headerContainer">
-          <div className="logoContainer">
+          <Link to="/"><div className="logoContainer">
             <div>
               <img className="logo" src={strideCastLogo}></img>
             </div>
             <p className="logoWord">StrideCast</p>
-          </div>
+          </div></Link>
           <div className="topNavBtns">
-            <button className="signUpBtn">
-              <Link to="/signup" className="signUpLink">Sign up</Link>
-            </button>
-            <button className="logInBtn">
-              <Link to="/login" className="logInLink">Log in</Link>
-            </button>
+          <Link to="/signup"className="signUpLink"><button className="signUpBtn">Sign up</button></Link>
+          <Link to="/login" className="logInLink"><button className="logInBtn">Log in</button></Link>
           </div>
         </div>
       </header>

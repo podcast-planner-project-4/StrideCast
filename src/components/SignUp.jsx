@@ -1,15 +1,15 @@
 import strideCastLogo from "../assets/strideCastLogo.png";
-
+import { Link } from "react-router-dom"
 function SignUp() {
   return (
     <div className="formPage">
       <div className="logInLogoContainer">
-        <div className="logoContainer">
+        <Link to="/"><div className="logoContainer">
             <div>
               <img className="logo" src={strideCastLogo}></img>
             </div>
             <p className="logoWord">StrideCast</p>
-        </div>
+        </div></Link>
       </div>
       <div className="formContainer">
         <h2>Sign up</h2>
@@ -25,9 +25,9 @@ function SignUp() {
           </div>
           <button type="submit">Create an account</button> 
         </form>
-        <p>Already have an account? Log in.</p>
+        <p>Already have an account? <Link to="/login">Log in.</Link></p>
       </div>
-      <p className="homeLink">Return home</p>
+      <p className="homeLink"><Link to="/">Return home</Link></p>
     </div>
   );
 }

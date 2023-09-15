@@ -21,8 +21,10 @@ function App() {
   const [landingPage, setLandingPage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [selectLessTime, setSelectLessTime] = useState('')
 
   const handleSubmit = (event) => {
+    setSelectLessTime("")
     event.preventDefault();
     setIsLoading(true);
     setErrorMessage("");
@@ -33,8 +35,8 @@ function App() {
     newUrl.pathname = "/search";
 
     if (walkDuration > 720) {
-      alert("Select Less Time");
-      return;
+      setIsLoading(false);
+      setSelectLessTime("Select Less Time");
     }
 
     // client.fetchPodcastGenres({
@@ -93,7 +95,13 @@ function App() {
   //     setWalkDuration(inputValue);
   //   }
   const handleWalkDurationChange = (event) => {
-    setWalkDuration(event.target.value);
+    const newValue = event.target.value
+    if (newValue.startsWith('0')) {
+      event.preventDefault();
+      console.log('hello')
+    } else {
+      setWalkDuration(newValue);
+    }
   };
 
   const handleSelectedGenreChange = (event) => {
@@ -124,6 +132,8 @@ function App() {
                 />
                 {landingPage ? (
                   <LandingPage />
+                ) : selectLessTime ? (
+                  <p className="errorMsg">{selectLessTime}</p>
                 ) : isLoading ? (
                   <APILoadingState />
                 ) : errorMessage ? (
