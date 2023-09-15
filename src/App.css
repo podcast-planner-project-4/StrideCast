@@ -49,7 +49,10 @@ header {
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 0.025rem;
   font-weight: 600;
+  color: white;
 }
 
 .logo {
@@ -61,13 +64,6 @@ header {
   align-content: center;
   margin-right: 0.5rem;
   cursor: pointer;
-}
-
-.logoWord {
-  font-family: 'Raleway', sans-serif;
-  letter-spacing: 0.025rem;
-  font-size: 1.5rem;
-  color: white;
 }
 
 .logoWord:hover {
@@ -107,6 +103,10 @@ header {
 
 .logInBtn:hover {
   background-color: #b6afe0;
+}
+
+.logInBtn:active {
+  background-color: #D3CFE6;
 }
 
 .sidebar {
@@ -185,6 +185,10 @@ select {
 
 .sidebarNav button:hover {
   background-color: #b6afe0;
+}
+
+.sidebarNav button:active {
+  background-color: #D3CFE6;
 }
 
 .sidebarImg {
@@ -492,7 +496,7 @@ form input {
 }
 
 form input::placeholder {
-  color: white;
+  color: grey;
   letter-spacing: 0.04rem;
 }
 
@@ -575,6 +579,10 @@ form button {
 
 .logInFormBtn:hover, .signUpFormBtn:hover {
   background-color: #b6afe0;
+}
+
+.logInFormBtn:active, .signUpFormBtn:active {
+  background-color: #D3CFE6;
 }
 
 .logInLogoContainer {
