@@ -6,7 +6,7 @@ const Header = () => {
     <>
       <header>
         <div className="wrapper headerContainer">
-          <Link to="/">
+          <Link to="/" className="logoLink" style={{ color: 'inherit', textDecoration: 'inherit'}}>
             <div className="logoContainer">
               <div>
                 <img className="logo" src={strideCastLogo}></img>

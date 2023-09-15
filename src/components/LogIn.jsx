@@ -5,7 +5,7 @@ function LogIn() {
   return (
     <div className="formPage">
       <div className="logInLogoContainer">
-        <Link to="/">
+      <Link to="/" className="logoLink" style={{ color: 'inherit', textDecoration: 'inherit'}}>
           <div className="logoContainer">
             <div>
               <img className="logo" src={strideCastLogo}></img>
@@ -17,9 +17,19 @@ function LogIn() {
       <div className="formContainer">
         <h2>Log in</h2>
         <form>
-          <input type="email" id="logInEmail" placeholder="Email" required></input>
+          <input 
+            type="email" 
+            id="logInEmail" 
+            placeholder="Email" 
+            required>
+          </input>
           <div className="passwordContainer">
-            <input type="password" id="signUpPassword" className="signUpPassword" placeholder="Password"></input>
+            <input 
+              type="password" 
+              id="signUpPassword" 
+              className="signUpPassword" 
+              placeholder="Password"> 
+            </input>
             <i class="fa-regular fa-eye-slash faVisible"></i>
           </div>
           <button type="submit" className="logInFormBtn">Log in</button>
