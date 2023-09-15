@@ -36,7 +36,7 @@ function App() {
 
     if (walkDuration > 720) {
       setIsLoading(false);
-      setSelectLessTime("Select Less Time");
+      setSelectLessTime("Please select less time.");
     }
 
     // client.fetchPodcastGenres({
@@ -69,7 +69,7 @@ function App() {
       .then((response) => {
         setIsLoading(false);
         if (response.data.results.length === 0) {
-          setErrorMessage("Sorry! No Podcast Found");
+          setErrorMessage("Sorry! No podcasts found. Please try again.");
         } else {
           setPodcasts(response.data.results);
         }
@@ -77,7 +77,7 @@ function App() {
       .catch((error) => {
         console.log(error);
         setIsLoading(false);
-        setErrorMessage("Error retrieving Podcast, Please try again later");
+        setErrorMessage("Error retrieving podcasts. Please try again later.");
       });
 
     setLandingPage(false);
@@ -133,11 +133,17 @@ function App() {
                 {landingPage ? (
                   <LandingPage />
                 ) : selectLessTime ? (
-                  <p className="errorMsg">{selectLessTime}</p>
+                  <div className="errorMsg">
+                    <i className="fa-solid fa-triangle-exclamation errorIcon"></i>
+                    <p>{selectLessTime}</p>
+                  </div>
                 ) : isLoading ? (
                   <APILoadingState />
                 ) : errorMessage ? (
-                  <p className="errorMsg">{errorMessage}</p>
+                  <div className="errorMsg">
+                    <i className="fa-solid fa-triangle-exclamation errorIcon"></i>
+                    <p>{errorMessage}</p>
+                  </div>
                 ) : (
                   <Playlist
                     podcasts={podcasts}
