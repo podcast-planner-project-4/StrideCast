@@ -67,6 +67,11 @@ header {
   font-family: 'Raleway', sans-serif;
   letter-spacing: 0.025rem;
   font-size: 1.5rem;
+  color: white;
+}
+
+.logoWord:hover {
+  text-decoration: none;
 }
 
 .topNavBtns {
@@ -84,13 +89,24 @@ header {
 
 .signUpBtn {
   background-color: #001E31;
+  border: 1px solid #001E31;
   margin-right: 1rem;
   color: white; 
 }
 
+.signUpBtn:hover {
+  border: 0.5px solid white;
+}
+
 .logInBtn{
   background-color: #D3CFE6;
+  border: 1px solid #D3CFE6;
   color: #001E31;
+  transition: all 0.25s;
+}
+
+.logInBtn:hover {
+  background-color: #b6afe0;
 }
 
 .sidebar {
@@ -161,10 +177,14 @@ select {
   border-radius: 6px;
   cursor: pointer;
   margin-top: 1.5rem;
-  letter-spacing: 0.025rem;
+  letter-spacing: 0.1rem;
   position: relative;
   z-index: 15;
   font-weight: 600;
+}
+
+.sidebarNav button:hover {
+  background-color: #b6afe0;
 }
 
 .sidebarImg {
@@ -414,11 +434,10 @@ audio {
 .errorMsg {
   width: calc(100vw - 400px);
   margin-left: 400px;
-  margin-top: 8vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   position: fixed;
   font-size: 1rem;
@@ -454,7 +473,8 @@ audio {
 
 .formContainer h2 {
   font-size: 1.7rem;
-  font-weight: normal;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
 }
 
 form {
@@ -473,6 +493,7 @@ form input {
 
 form input::placeholder {
   color: white;
+  letter-spacing: 0.04rem;
 }
 
 .passwordContainer {
@@ -532,11 +553,13 @@ form button {
   font-weight: 600;
   letter-spacing: 0.1rem;
   cursor: pointer;
+  transition: all 0.25s;
 }
 
 .formContainer p {
   text-align: center;
   font-size: 0.8rem;
+  letter-spacing: 0.04rem;
 }
 
 .homeLink {
@@ -550,6 +573,10 @@ form button {
   margin-top: 1rem;
 }
 
+.logInFormBtn:hover, .signUpFormBtn:hover {
+  background-color: #b6afe0;
+}
+
 .logInLogoContainer {
   height: 8vh;
   width: 100vw;
@@ -561,3 +588,29 @@ form button {
   padding: 0 3.5rem;
 }
 
+.returnHome {
+  color: rgb(160, 160, 160);
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+.returnHome:hover {
+  text-decoration: underline;
+}
+
+.linkToLogIn, .linkToSignUp {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+.linkToLogIn:hover, .linkToSignUp:hover {
+  text-decoration: underline;
+}
+
+.errorIcon {
+  color: white;
+  font-size: 5rem;
+  padding-bottom: 1rem;
+}
