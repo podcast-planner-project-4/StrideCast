@@ -1,15 +1,16 @@
 import strideCastLogo from "../assets/strideCastLogo.png";
+import { Link } from 'react-router-dom'
 
 function LogIn() {
   return (
     <div className="formPage">
       <div className="logInLogoContainer">
-        <div className="logoContainer">
+        <Link to="/"><div className="logoContainer">
             <div>
               <img className="logo" src={strideCastLogo}></img>
             </div>
             <p className="logoWord">StrideCast</p>
-        </div>
+        </div></Link>
       </div>
       <div className="formContainer">
         <h2>Log in</h2>
@@ -19,11 +20,11 @@ function LogIn() {
             <input type="password" id="signUpPassword" className="signUpPassword" placeholder="Password:"></input>
             <i class="fa-regular fa-eye-slash faVisible"></i>
           </div>
-          <button type="submit" className="logInFormBtn">Log in</button> 
+          <button type="submit" className="logInFormBtn">Log in</button>
         </form>
-        <p>Don't have an account? Sign up here.</p>
+        <p>Don't have an account? <Link to="/signup"> Sign up here.</Link></p>
       </div>
-      <p className="homeLink">Return home</p>
+      <p className="homeLink"><Link to="/">Return home</Link></p>
     </div>
   );
 }
