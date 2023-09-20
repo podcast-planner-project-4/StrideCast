@@ -21,8 +21,10 @@ function App() {
   const [landingPage, setLandingPage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [selectLessTime, setSelectLessTime] = useState("");
 
   const handleSubmit = (event) => {
+    setSelectLessTime("");
     event.preventDefault();
     setIsLoading(true);
     setErrorMessage("");
@@ -33,8 +35,8 @@ function App() {
     newUrl.pathname = "/search";
 
     if (walkDuration > 720) {
-      setErrorMessage("Select a shorter time");
       setIsLoading(false);
+      setSelectLessTime("Please select less time.");
     }
 
     // client.fetchPodcastGenres({
@@ -67,7 +69,7 @@ function App() {
       .then((response) => {
         setIsLoading(false);
         if (response.data.results.length === 0) {
-          setErrorMessage("Sorry! No Podcast Found");
+          setErrorMessage("Sorry! No podcasts found. Please try again.");
         } else {
           setPodcasts(response.data.results);
         }
@@ -75,7 +77,7 @@ function App() {
       .catch((error) => {
         console.log(error);
         setIsLoading(false);
-        setErrorMessage("Error retrieving Podcast, Please try again later");
+        setErrorMessage("Error retrieving podcasts. Please try again later.");
       });
 
     setLandingPage(false);
@@ -93,7 +95,13 @@ function App() {
   //     setWalkDuration(inputValue);
   //   }
   const handleWalkDurationChange = (event) => {
-    setWalkDuration(event.target.value);
+    const newValue = event.target.value;
+    if (newValue.startsWith("0")) {
+      event.preventDefault();
+      console.log("hello");
+    } else {
+      setWalkDuration(newValue);
+    }
   };
 
   const handleSelectedGenreChange = (event) => {
@@ -124,10 +132,18 @@ function App() {
                 />
                 {landingPage ? (
                   <LandingPage />
+                ) : selectLessTime ? (
+                  <div className="errorMsg">
+                    <i className="fa-solid fa-triangle-exclamation errorIcon"></i>
+                    <p>{selectLessTime}</p>
+                  </div>
                 ) : isLoading ? (
                   <APILoadingState />
                 ) : errorMessage ? (
-                  <p className="errorMsg">{errorMessage}</p>
+                  <div className="errorMsg">
+                    <i className="fa-solid fa-triangle-exclamation errorIcon"></i>
+                    <p>{errorMessage}</p>
+                  </div>
                 ) : (
                   <Playlist
                     podcasts={podcasts}
