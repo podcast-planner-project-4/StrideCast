@@ -33,8 +33,8 @@ function App() {
     newUrl.pathname = "/search";
 
     if (walkDuration > 720) {
-      alert("Select Less Time");
-      return;
+      setErrorMessage("Select a shorter time");
+      setIsLoading(false);
     }
 
     // client.fetchPodcastGenres({
