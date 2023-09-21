@@ -8,16 +8,35 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState('')
+  // const [passwordLength, setPasswordLength] = useState('')
+
 
   const signUpUser = (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password, confirmPassword)
+    if (password === confirmPassword && password.length >= 6) { 
+      createUserWithEmailAndPassword(auth, email, password, confirmPassword)
       .then((userCredential) => {
         console.log(userCredential)
+        setPasswordErrorMessage('')
       })
       .catch((error) => {
         console.log(error);
       })
+    } else { 
+      setPasswordErrorMessage('Please check passwords and try again. Passwords must match and contain six or more characters.')
+    } 
+  }
+
+  
+  const handlePasswordVisibility = () => { 
+    setPasswordVisible(!passwordVisible)
+  }
+
+  const handleConfirmPasswordVisibility = () => { 
+    setConfirmPasswordVisible(!confirmPasswordVisible)
   }
 
   return (
@@ -45,7 +64,9 @@ function SignUp() {
           </input>
           <div className="passwordContainer">
             <input 
-              type="password" 
+              type={
+               passwordVisible ? "text" : "password" 
+              }
               id="signUpPassword" 
               className="signUpPassword" 
               value={password}
@@ -53,19 +74,23 @@ function SignUp() {
               placeholder="Password"
               required>
             </input>
-            <i class="fa-regular fa-eye-slash faVisible"></i>
+            <i class={`fa-regular ${ passwordVisible ? 'fa-eye' : 'fa-eye-slash'} faVisible`} onClick={handlePasswordVisibility}></i>
           </div>
           <div className="confirmPasswordContainer">
             <input 
-              type="password" 
+              type={
+                confirmPasswordVisible ? "text" : "password" 
+               }
               id="signUpConfirmPassword" className="signUpConfirmPassword" 
               placeholder="Confirm password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required>
             </input>
-            <i class="fa-regular fa-eye-slash faVisible"></i>
+            <i class={`fa-regular ${ confirmPasswordVisible ? 'fa-eye' : 'fa-eye-slash'} faVisible`} onClick={handleConfirmPasswordVisibility}></i>
           </div>
+          { <p>{passwordErrorMessage}</p> }
+  
           <button type="submit" className="signUpFormBtn">Create an account</button> 
         </form>
         <p>Already have an account? <Link to="/login" className="linkToLogIn">Log in</Link>.</p>
