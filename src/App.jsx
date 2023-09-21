@@ -21,10 +21,10 @@ function App() {
   const [landingPage, setLandingPage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [selectLessTime, setSelectLessTime] = useState('')
+  const [selectLessTime, setSelectLessTime] = useState("");
 
   const handleSubmit = (event) => {
-    setSelectLessTime("")
+    setSelectLessTime("");
     event.preventDefault();
     setIsLoading(true);
     setErrorMessage("");
@@ -95,22 +95,15 @@ function App() {
   //     setWalkDuration(inputValue);
   //   }
   const handleWalkDurationChange = (event) => {
-    const newValue = event.target.value
-    if (newValue.startsWith('0')) {
+    const newValue = event.target.value;
+    if (newValue.startsWith("0")) {
       event.preventDefault();
-      console.log('hello')
+      console.log("hello");
     } else {
       setWalkDuration(newValue);
     }
   };
 
-  const handleSelectedGenreChange = (event) => {
-    setSelectedGenre(event.target.value);
-  };
-
-  const handlePlaylistNameInputChange = (event) => {
-    setPlaylistNameInput(event.target.value);
-  };
   return (
     <>
       <div className="App">
@@ -124,9 +117,13 @@ function App() {
                   walkDuration={walkDuration}
                   handleWalkDurationChange={handleWalkDurationChange}
                   selectedGenre={selectedGenre}
-                  handleSelectedGenreChange={handleSelectedGenreChange}
+                  handleSelectedGenreChange={(e) =>
+                    setSelectedGenre(e.target.value)
+                  }
                   playlistNameInput={playlistNameInput}
-                  handlePlaylistNameInputChange={handlePlaylistNameInputChange}
+                  handlePlaylistNameInputChange={(e) =>
+                    setPlaylistNameInput(e.target.value)
+                  }
                   handleSubmit={handleSubmit}
                   errorMessage={errorMessage}
                 />
