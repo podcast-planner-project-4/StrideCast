@@ -1,11 +1,40 @@
 import strideCastLogo from "../assets/strideCastLogo.png";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../Firebase";
+import { useState } from "react";
 
 function LogIn() {
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
+
+  const togglePassword = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+  const navigate = useNavigate();
+  const loginUser = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoginError("Invalid email or password. Please try again.");
+      });
+  };
+
   return (
     <div className="formPage">
       <div className="logInLogoContainer">
-      <Link to="/" className="logoLink" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+        <Link
+          to="/"
+          className="logoLink"
+          style={{ color: "inherit", textDecoration: "inherit" }}
+        >
           <div className="logoContainer">
             <div>
               <img className="logo" src={strideCastLogo}></img>
@@ -16,27 +45,50 @@ function LogIn() {
       </div>
       <div className="formContainer">
         <h2>Log in</h2>
-        <form>
-          <input 
-            type="email" 
-            id="logInEmail" 
-            placeholder="Email" 
-            required>
-          </input>
+        <form onSubmit={loginUser}>
+          <input
+            type="email"
+            id="logInEmail"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          ></input>
           <div className="passwordContainer">
-            <input 
-              type="password" 
-              id="signUpPassword" 
-              className="signUpPassword" 
-              placeholder="Password"> 
-            </input>
-            <i class="fa-regular fa-eye-slash faVisible"></i>
+            <input
+              type={passwordVisible ? "text" : "password"}
+              id="signUpPassword"
+              className="signUpPassword"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            ></input>
+            <i
+              class={`fa-regular ${
+                passwordVisible ? "fa-eye" : "fa-eye-slash"
+              } faVisible`}
+              onClick={togglePassword}
+            ></i>
           </div>
-          <button type="submit" className="logInFormBtn">Log in</button>
+          {<p>{loginError}</p>}
+          <button type="submit" className="logInFormBtn">
+            Log in
+          </button>
         </form>
-        <p>Don't have an account? <Link to="/signup" className="linkToSignUp"> Sign up here</Link>.</p>
+        <p>
+          Don't have an account?{" "}
+          <Link to="/signup" className="linkToSignUp">
+            {" "}
+            Sign up here
+          </Link>
+          .
+        </p>
       </div>
-      <p className="homeLink"><Link to="/" className="returnHome">Return home</Link></p>
+      <p className="homeLink">
+        <Link to="/" className="returnHome">
+          Return home
+        </Link>
+      </p>
     </div>
   );
 }

@@ -104,13 +104,6 @@ function App() {
     }
   };
 
-  const handleSelectedGenreChange = (event) => {
-    setSelectedGenre(event.target.value);
-  };
-
-  const handlePlaylistNameInputChange = (event) => {
-    setPlaylistNameInput(event.target.value);
-  };
   return (
     <>
       <div className="App">
@@ -124,9 +117,13 @@ function App() {
                   walkDuration={walkDuration}
                   handleWalkDurationChange={handleWalkDurationChange}
                   selectedGenre={selectedGenre}
-                  handleSelectedGenreChange={handleSelectedGenreChange}
+                  handleSelectedGenreChange={(e) =>
+                    setSelectedGenre(e.target.value)
+                  }
                   playlistNameInput={playlistNameInput}
-                  handlePlaylistNameInputChange={handlePlaylistNameInputChange}
+                  handlePlaylistNameInputChange={(e) =>
+                    setPlaylistNameInput(e.target.value)
+                  }
                   handleSubmit={handleSubmit}
                   errorMessage={errorMessage}
                 />
