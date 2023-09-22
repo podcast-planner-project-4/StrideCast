@@ -12,6 +12,8 @@ import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import ErrorPage from "./components/ErrorPage";
 import "./App.css";
+import { auth } from "./Firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
   const [podcasts, setPodcasts] = useState([]);
@@ -22,6 +24,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [selectLessTime, setSelectLessTime] = useState("");
+  const [authUser, setAuthUser] = useState(null)
 
   const handleSubmit = (event) => {
     setSelectLessTime("");
@@ -104,6 +107,19 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    const listen = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAuthUser(user);
+      } else {
+        setAuthUser(null);
+      }
+    });
+    return () => {
+      listen();
+    };
+  }, []);
+
   return (
     <>
       <div className="App">
@@ -112,7 +128,7 @@ function App() {
             path="/"
             element={
               <>
-                <Header />
+                <Header authUser={authUser}setLandingPage={setLandingPage}/>
                 <SideBar
                   walkDuration={walkDuration}
                   handleWalkDurationChange={handleWalkDurationChange}
@@ -143,6 +159,7 @@ function App() {
                   </div>
                 ) : (
                   <Playlist
+                    authUser={authUser}
                     podcasts={podcasts}
                     playlistNameInput={playlistNameInput}
                   />
