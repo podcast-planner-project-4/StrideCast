@@ -70,11 +70,15 @@ header {
   text-decoration: none;
 }
 
-.topNavBtns {
+.topNavBtns,
+.logOutContainer {
   color: white;
+  display: flex;
+  align-items: center;
 }
 
-.topNavBtns button {
+.topNavBtns button,
+.logOutContainer button {
   padding: 1rem 1.75rem;
   border-radius: 2rem;
   border: none;
@@ -94,19 +98,30 @@ header {
   border: 0.5px solid white;
 }
 
-.logInBtn{
+.logInBtn, .logOutBtn {
   background-color: #D3CFE6;
   border: 1px solid #D3CFE6;
   color: #001E31;
   transition: all 0.25s;
 }
 
-.logInBtn:hover {
+.logInBtn:hover,
+.logOutBtn:hover {
   background-color: #b6afe0;
 }
 
-.logInBtn:active {
+.logInBtn:active,
+.logOutBtn:active {
   background-color: #D3CFE6;
+}
+
+.logOutBtn {
+  margin-left: 2rem;
+}
+
+.logOutContainer p {
+  color: grey;
+  font-size: 0.9rem;
 }
 
 .sidebar {
@@ -500,8 +515,8 @@ form input::placeholder {
   letter-spacing: 0.04rem;
 }
 
-.passwordContainer {
-  margin: 1.5rem 0;
+.passwordContainer, .confirmPasswordContainer {
+  margin-top: 1.5rem;
 }
 
 .passwordContainer input,
@@ -547,7 +562,7 @@ form input::placeholder {
 }
 
 form button {
-  margin: 3rem 0 1rem 0;
+  margin: 1rem 0;
   padding: 1.2rem 0;
   background-color: #D3CFE6;
   color: #001E31;
@@ -621,4 +636,9 @@ form button {
   color: white;
   font-size: 5rem;
   padding-bottom: 1rem;
+}
+
+.formErrorMsg {
+  padding: 2rem 0 1rem;
+  color: grey;
 }

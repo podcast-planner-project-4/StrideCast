@@ -85,7 +85,6 @@ const SideBar = ({
             <button type="submit">Get List</button>
           </form>
         </div>
-        {/* <img className="sidebarImg" src={sidebarImg}></img> */}
       </div>
     </>
   );

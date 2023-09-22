@@ -64,13 +64,13 @@ function LogIn() {
               onChange={(e) => setPassword(e.target.value)}
             ></input>
             <i
-              class={`fa-regular ${
+              className={`fa-regular ${
                 passwordVisible ? "fa-eye" : "fa-eye-slash"
               } faVisible`}
               onClick={togglePassword}
             ></i>
           </div>
-          {<p>{loginError}</p>}
+          {<p className="formErrorMsg">{loginError}</p>}
           <button type="submit" className="logInFormBtn">
             Log in
           </button>

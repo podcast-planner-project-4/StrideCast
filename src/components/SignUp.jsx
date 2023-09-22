@@ -12,9 +12,9 @@ function SignUp() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
-  // const [passwordLength, setPasswordLength] = useState('')
 
   const navigate = useNavigate();
+
   const signUpUser = (e) => {
     e.preventDefault();
     if (password === confirmPassword && password.length >= 6) {
@@ -91,7 +91,7 @@ function SignUp() {
               required
             ></input>
             <i
-              class={`fa-regular ${
+              className={`fa-regular ${
                 passwordVisible ? "fa-eye" : "fa-eye-slash"
               } faVisible`}
               onClick={handlePasswordVisibility}
@@ -108,14 +108,13 @@ function SignUp() {
               required
             ></input>
             <i
-              class={`fa-regular ${
+              className={`fa-regular ${
                 confirmPasswordVisible ? "fa-eye" : "fa-eye-slash"
               } faVisible`}
               onClick={handleConfirmPasswordVisibility}
             ></i>
           </div>
-          {<p>{passwordErrorMessage}</p>}
-
+          {<p className="formErrorMsg">{passwordErrorMessage}</p>}
           <button type="submit" className="signUpFormBtn">
             Create an account
           </button>

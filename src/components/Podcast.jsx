@@ -1,9 +1,11 @@
 const Podcast = ({ podcast }) => {
+
   const maxLength = 200;
   const trimmedDesc =
     podcast.description_original.length > maxLength
       ? podcast.description_original.substring(0, maxLength) + "..."
       : podcast.description_original;
+
   return (
     <li key={podcast.id} className="podcastContainer">
       <div className="podcastCoverContainer">
@@ -21,7 +23,7 @@ const Podcast = ({ podcast }) => {
               <p className="podcastAuthor">{podcast.publisher_original}</p>
             </div>
           </div>
-          <i class="fa-solid fa-bars faDragIcon"></i>
+          <i className="fa-solid fa-bars faDragIcon"></i>
         </div>
         <p className="podcastDescription">{trimmedDesc}</p>
         <audio controls>
