@@ -25,20 +25,22 @@ const Header = ({authUser, setLandingPage}) => {
               <p className="logoWord">StrideCast</p>
             </div>
           </Link>
-          {authUser ? (<div><p>{`Welcome ${authUser.email}`}</p><button onClick={signOutUser}>Sign Out</button></div>
-          
+          {authUser ? 
+            ( <div className="logOutContainer">
+                <p>{`Welcome, ${authUser.email}`}</p>
+                <button className="logOutBtn" onClick={signOutUser}>Log out</button>
+              </div>
             ):(
-            
-            <div className="topNavBtns">
-            <Link to="/signup"className="signUpLink">
-              <button className="signUpBtn">Sign up</button>
-            </Link>
-            <Link to="/login" className="logInLink">
-              <button className="logInBtn">Log in</button>
-            </Link>
-          </div>)
+              <div className="topNavBtns">
+                <Link to="/signup"className="signUpLink">
+                  <button className="signUpBtn">Sign up</button>
+                </Link>
+                <Link to="/login" className="logInLink">
+                  <button className="logInBtn">Log in</button>
+                </Link>
+              </div>
+            )
           }
-          
         </div>
       </header>
     </>

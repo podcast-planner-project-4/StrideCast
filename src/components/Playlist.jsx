@@ -1,8 +1,7 @@
 import { useState } from "react";
 import Podcast from "./Podcast";
 import { Link } from "react-router-dom";
-import { database } from "../Firebase";
-import { set, ref, getDatabase, remove } from "firebase/database";
+import { ref, getDatabase, update } from "firebase/database";
 
 const Playlist = ({ podcasts, playlistNameInput, authUser }) => {
 
@@ -14,13 +13,12 @@ const Playlist = ({ podcasts, playlistNameInput, authUser }) => {
       const userUid = authUser.uid;
       console.log(userUid)
       const database = getDatabase();
-      const playListRef = ref(database, `users/${userUid}/${playlistNameInput}`);
+      const userRef = ref(database, `users/${userUid}/`);
       if(!favourited){
-        set(playListRef, podcasts)
+        update(userRef, { playlistName: playlistNameInput , podcasts } )
       }  else {
-      remove(playListRef)
+        update(userRef, { playlistName: null, podcasts: null })
     }
-    
   }
 }
 
@@ -34,10 +32,14 @@ const Playlist = ({ podcasts, playlistNameInput, authUser }) => {
           </button>
         </div>
         <div className="savePlaylistContainer">
-          {authUser ? <i className={`${favourited ? 'fa-solid' : 'fa-regular'} fa-heart favouriteIcon`} onClick={handleFavourite}></i> :
-          <Link to="/signup" className="savePlaylistLink">
-            <i className="fa-regular fa-heart favouriteIcon"></i>
-          </Link>}
+          {authUser ? 
+            (<i className={`${favourited ? 'fa-solid' : 'fa-regular'} fa-heart favouriteIcon`} onClick={handleFavourite}>
+            </i> )
+            :
+            (<Link to="/signup" className="savePlaylistLink">
+              <i className="fa-regular fa-heart favouriteIcon"></i>
+            </Link>)
+          }
         </div>
       </div>
       <ul>

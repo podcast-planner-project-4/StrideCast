@@ -17,7 +17,7 @@ import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
   const [podcasts, setPodcasts] = useState([]);
-  const [walkDuration, setWalkDuration] = useState(""); // maybe, we want to set this to 0?
+  const [walkDuration, setWalkDuration] = useState(""); 
   const [selectedGenre, setSelectedGenre] = useState("");
   const [playlistNameInput, setPlaylistNameInput] = useState("");
   const [landingPage, setLandingPage] = useState(true);
@@ -27,10 +27,11 @@ function App() {
   const [authUser, setAuthUser] = useState(null)
 
   const handleSubmit = (event) => {
-    setSelectLessTime("");
     event.preventDefault();
+    setSelectLessTime("");
     setIsLoading(true);
     setErrorMessage("");
+    
     const apiKey = import.meta.env.VITE_API_KEY;
     const baseUrl = "https://listen-api.listennotes.com/api/v2";
     const client = Client({ apiKey });
@@ -41,16 +42,6 @@ function App() {
       setIsLoading(false);
       setSelectLessTime("Please select less time.");
     }
-
-    // client.fetchPodcastGenres({
-    //   top_level_only: 1,
-
-    // }).then((response) => {
-
-    //   console.log(response.data);
-    // }).catch((error) => {
-    //   console.log(error)
-    // });
 
     client
       .search({
@@ -88,15 +79,6 @@ function App() {
 
   useEffect(() => {}, [walkDuration, selectedGenre, handleSubmit]);
 
-  // We want the API call when user clicks on the submit button (maybe a dependency array situation)
-
-  // have our form and in the select we will a useState, that state will update the value and that value will be placed in the query
-
-  // const handleWalkDurationChange = (event) => {
-  //   const inputValue = event.target.value;
-  //   if (/^\d+$/.test(inputValue) || inputValue === "") {
-  //     setWalkDuration(inputValue);
-  //   }
   const handleWalkDurationChange = (event) => {
     const newValue = event.target.value;
     if (newValue.startsWith("0")) {
@@ -143,7 +125,7 @@ function App() {
                   handleSubmit={handleSubmit}
                   errorMessage={errorMessage}
                 />
-                {landingPage ? (
+                { landingPage ? (
                   <LandingPage />
                 ) : selectLessTime ? (
                   <div className="errorMsg">
