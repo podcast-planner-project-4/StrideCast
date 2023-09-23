@@ -27,8 +27,6 @@ const SideBar = ({
         <div>
           <form className="sidebarNav" onSubmit={handleSubmit}>
             <label htmlFor="walkTime">How long is your walk?</label>
-            {/* make it so the user cannot put a negative number */}
-            {/* revisit if we want input type=text instead of number */}
             <input
               type="number"
               min="1"
@@ -82,7 +80,7 @@ const SideBar = ({
               onChange={handlePlaylistNameInputChange}
               required
             />
-            <button type="submit">Get List</button>
+            <button type="submit">Search</button>
           </form>
         </div>
       </div>

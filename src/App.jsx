@@ -31,17 +31,17 @@ function App() {
     setSelectLessTime("");
     setIsLoading(true);
     setErrorMessage("");
+
+    if (walkDuration > 720) {
+      setIsLoading(false);
+      setSelectLessTime("Please select less time.");
+    }
     
     const apiKey = import.meta.env.VITE_API_KEY;
     const baseUrl = "https://listen-api.listennotes.com/api/v2";
     const client = Client({ apiKey });
     const newUrl = new URL(baseUrl);
     newUrl.pathname = "/search";
-
-    if (walkDuration > 720) {
-      setIsLoading(false);
-      setSelectLessTime("Please select less time.");
-    }
 
     client
       .search({
@@ -77,7 +77,7 @@ function App() {
     setLandingPage(false);
   };
 
-  useEffect(() => {}, [walkDuration, selectedGenre, handleSubmit]);
+  useEffect(() => {}, [walkDuration, selectedGenre, handleSubmit]); //let's revisit this. what is even happening in this useEffect. 
 
   const handleWalkDurationChange = (event) => {
     const newValue = event.target.value;

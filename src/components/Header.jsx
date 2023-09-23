@@ -13,6 +13,7 @@ const Header = ({authUser, setLandingPage}) => {
       })
       .catch((error) => console.log(error));
   };
+
   return (
     <>
       <header>
@@ -27,8 +28,17 @@ const Header = ({authUser, setLandingPage}) => {
           </Link>
           {authUser ? 
             ( <div className="logOutContainer">
+                <div className="yourPlaylistContainer">
+                  <i className="fa-solid fa-headphones-simple faYourPlaylist"></i>                 
+                   <Link to="/yourPlaylist" className="yourPlaylistLink" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+                    <p>YOUR PLAYLIST</p>
+                    </Link>
+                </div>
+                <div className="logOutUserContainer">
+                <i className="fa-solid fa-user faUser"></i>
                 <p>{`Welcome, ${authUser.email}`}</p>
                 <button className="logOutBtn" onClick={signOutUser}>Log out</button>
+                </div>
               </div>
             ):(
               <div className="topNavBtns">

@@ -642,3 +642,28 @@ form button {
   padding: 2rem 0 1rem;
   color: grey;
 }
+
+.faUser, .faYourPlaylist {
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+.logOutContainer {
+  width: calc(100vw - 520px);
+  display: flex;
+  justify-content: space-between;
+}
+
+.logOutUserContainer, .yourPlaylistContainer {
+  display: flex;
+  align-items: center;
+}
+
+.yourPlaylistLink {
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.yourPlaylistLink p:hover {
+  color: white;
+}
