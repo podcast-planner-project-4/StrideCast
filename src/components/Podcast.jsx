@@ -20,7 +20,10 @@ const Podcast = ({ podcast }) => {
           <div className="podcastInfoTopLeft">
             <div>
               <h3 className="podcastTitle">{podcast.title_original}</h3>
-              <p className="podcastAuthor">{podcast.publisher_original}</p>
+              <div className="podcastAuthorContainer">
+                <i className="fa-solid fa-podcast faPodcast"></i>
+                <p className="podcastAuthor">{podcast.publisher_original}</p>
+              </div>
             </div>
           </div>
           <i className="fa-solid fa-bars faDragIcon"></i>

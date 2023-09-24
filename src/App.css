@@ -6,6 +6,16 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
+:root {
+  --priBlue: #001E31;
+  --secBlue: #0B293C;
+  --blueHov: #0e3046; 
+  --mint: #C2EDD8;
+  --purple: #D3CFE6;
+  --purpleHov: #b6afe0;
+  --white: rgb(251, 251, 253);
+}
+
 html {
   font-size: 16px;
   color: white;
@@ -24,16 +34,17 @@ ul {
 .App {
   height: 350vh;
   width: 100vw;
-  background-color: #001E31;
+  background-color: var(--priBlue);
 }
 
 header {
   width: 100vw;
   height: 8vh;
-  background-color:#0B293C;
+  background-color: var(--secBlue);
   display: flex;
   position: fixed;
   z-index: 5;
+  box-shadow: 0 0 15px rgba(16, 16, 16, 0.7);
 }
 
 .headerContainer {
@@ -52,7 +63,7 @@ header {
   font-family: 'Raleway', sans-serif;
   letter-spacing: 0.025rem;
   font-weight: 600;
-  color: white;
+  color: var(--white);
 }
 
 .logo {
@@ -72,14 +83,14 @@ header {
 
 .topNavBtns,
 .logOutContainer {
-  color: white;
+  color: var(--white);
   display: flex;
   align-items: center;
 }
 
 .topNavBtns button,
 .logOutContainer button {
-  padding: 1rem 1.75rem;
+  padding: 1rem 1.5rem;
   border-radius: 2rem;
   border: none;
   letter-spacing: 0.025rem;
@@ -88,31 +99,31 @@ header {
 }
 
 .signUpBtn {
-  background-color: #001E31;
-  border: 1px solid #001E31;
+  background-color: var(--priBlue);
+  border: 1px solid var(--priBlue);
   margin-right: 1rem;
-  color: white; 
+  color: var(--white); 
 }
 
 .signUpBtn:hover {
-  border: 0.5px solid white;
+  border: 0.5px solid var(--white);
 }
 
 .logInBtn, .logOutBtn {
-  background-color: #D3CFE6;
-  border: 1px solid #D3CFE6;
-  color: #001E31;
+  background-color: var(--purple);
+  border: 1px solid var(--purple);
+  color: var(--priBlue);
   transition: all 0.25s;
 }
 
 .logInBtn:hover,
 .logOutBtn:hover {
-  background-color: #b6afe0;
+  background-color: var(--purpleHov);
 }
 
 .logInBtn:active,
 .logOutBtn:active {
-  background-color: #D3CFE6;
+  background-color: var(--purple);
 }
 
 .logOutBtn {
@@ -127,13 +138,14 @@ header {
 .sidebar {
   width: 400px;
   height: 92vh;
-  background-color: #C2EDD8;
+  background-color: var(--mint);
   position: fixed;
   top: 8vh;
   z-index: 1;
   padding: 0 3.75rem;
   padding-top: 3rem;
-  color: #001E31;
+  color: var(--priBlue);
+  box-shadow: 0 0 8px #001E31;
 }
 
 .sidebarNav {
@@ -155,12 +167,15 @@ h1 {
 
 .sidebar input {
   padding: 1rem 0 1rem 0.5rem;
-  background-color: #001E31;
+  background-color: var(--priBlue);
   border: none;
-  color: white;
+  color: var(--white);
   border-radius: 6px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
+
+/*This code is to hide the default arrows in the number input. When hidding, you can use your own arrows from font-awesome.
+*/
 
 input[type="number"] {
   -webkit-appearance: textfield;
@@ -172,21 +187,21 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 
-/*This code is to hide the default arrows in the number input. When hidding, you can use your own arrows from font-awesome.
-*/
-
 select {
   padding: 1rem 0 1rem 0.5rem;
-  background-color: #001E31;
+  background-color: var(--priBlue);
   border: none;
-  color: white;
+  color: var(--white);
   border-radius: 6px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
+.faSearch {
+  padding-right: 0.25rem;
+}
 .sidebarNav button {
-  background-color: #D3CFE6;
-  color: #001E31;
+  background-color: var(--purple);
+  color: var(--priBlue);
   border: none;
   padding: 1rem 1.25rem;
   border-radius: 6px;
@@ -199,25 +214,18 @@ select {
 }
 
 .sidebarNav button:hover {
-  background-color: #b6afe0;
+  background-color: var(--purpleHov);
 }
 
 .sidebarNav button:active {
-  background-color: #D3CFE6;
-}
-
-.sidebarImg {
-  position: absolute;
-  z-index: 10;
-  bottom: 8vh;
-  left: -3%;
-  transform: rotate(5deg);
-  width: 105%;
+  background-color: var(--purple);
 }
 
 .playlistContainer  {
   padding-top: 13vh;
   margin-left: 350px;
+  background: linear-gradient(#001929, #C2EDD8);
+  height: 100%;
 }
 
 footer {
@@ -227,23 +235,37 @@ footer {
   width: 400px;
   padding: 0 3.75rem;
   font-size: 0.7rem;
-  color: #001E31;
-
+  color: var(--priBlue);
 }
 
-.juno, .copyright {
+footer a {
+  color: var(--priBlue);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.junoCopy {
   font-size: 0.65rem;
-  padding-bottom: 0.15rem;
+  padding-top: 0.25rem;
 }
 
 .podcastContainer {
   margin: 1.5rem auto;
-  background-color: #0B293C;
+  background-color: var(--secBlue);
   border-radius: 15px;
   display: flex;
   padding: 1.5rem;
   width: 1000px;
   cursor: pointer;
+}
+
+.podcastContainer:hover {
+  background-color: var(--blueHov);
 }
 
 .podcastCoverContainer {
@@ -284,28 +306,26 @@ footer {
   text-decoration: none;
 }
 
-.playBtn {
-  background-color: #C2EDD8;
-  border: none;
-  color: #001E31;
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  margin-right: 1rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .podcastTitle {
   padding-right: 1rem;
   letter-spacing: 0.025rem;
+  margin-bottom: 0.1rem;
+}
+
+.podcastAuthorContainer {
+  display: flex;
+  align-items: center;
+  color: var(--mint);
 }
 
 .podcastAuthor {
   color: grey;
   font-size: 0.9rem;
+  margin-left: 0.2rem
+}
+
+.faPodcast {
+  font-size: 0.8rem;
 }
 
 .podcastDescription {
@@ -328,8 +348,14 @@ h2 {
 
 .faDragIcon {
   align-self: flex-start;
-  color: #C2EDD8;
+  color: var(--mint);
   cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.25s;
+}
+
+.faDragIcon:hover {
+  font-size: 1.15rem;
 }
 
 .playlistHeader {
@@ -356,17 +382,22 @@ h2 {
 }
 
 .favouriteIcon {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  background-color: #C2EDD8;
   margin-left: 0.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #001223;
+  color: var(--mint);
   cursor: pointer;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  transition: all 0.25s;
+}
+
+.favouriteIcon:hover {
+  font-size: 1.6rem;
+}
+
+.favouriteIcon:active {
+  font-size: 1.75rem;
 }
 
 .landingPageContainer {
@@ -377,6 +408,7 @@ h2 {
   align-items: center;
   height: 100vh;
   position: fixed;
+  background: linear-gradient(135deg, var(--priBlue), #C2EDD8);
 }
 
 .landingPageImg {
@@ -409,7 +441,7 @@ h2 {
 .spinner {
   border: 25px solid black;
   border-radius: 50%;
-  border-top: 25px solid #C2EDD8;
+  border-top: 25px solid var(--mint);
   width: 100px;
   height: 100px;
   animation: spin 1s linear infinite;
@@ -431,15 +463,20 @@ h2 {
 }
 
 .faShuffleBtn {
-  background-color: #001E31;
+  background-color: transparent;
   border: none;
   cursor: pointer;
   margin-left: 1rem;
 }
 
 .faShuffleIcon {
-  color: #C2EDD8;
-  font-size: 1.5rem;
+  color: var(--mint);
+  font-size: 1.25rem;
+  transform: all 0.25s;
+}
+
+.faShuffleIcon:hover {
+  font-size: 1.35rem;
 }
 
 audio {
@@ -448,6 +485,9 @@ audio {
   position: relative;
   z-index: 0;
   width: 100%;
+  border-radius: 6px;
+  background-color: rgb(19, 19, 19);
+  opacity: 1;
 }
 
 .errorMsg {
@@ -463,18 +503,13 @@ audio {
   padding: 3.2rem 0 0 3.2rem;
 }
 
-.errorBorder{
-  border: 3px solid rgb(252, 3, 3);
-  border-radius: 8px;
-}
-
 .signUpLink {
   color: white;
   text-decoration: none;
 }
 
 .logInLink {
-  color: #001e31;
+  color: var(--priBlue);
   text-decoration: none;
 }
 
@@ -486,7 +521,7 @@ audio {
   width: 450px;
   padding: 3rem 2rem;
   border-radius: 6px;
-  background-color: #0B293C;
+  background-color: var(--secBlue);
   margin-top: 5rem;
 }
 
@@ -506,8 +541,8 @@ form input {
   border-radius: 4px;
   border: none;
   padding: 1.2rem 0.8rem;
-  background-color: #001E31;
-  color: white;
+  background-color: var(--priBlue);
+  color: var(--white);
 }
 
 form input::placeholder {
@@ -515,8 +550,14 @@ form input::placeholder {
   letter-spacing: 0.04rem;
 }
 
+.sidebarNav input::placeholder {
+  color: var(--white);
+  opacity: 1;
+  letter-spacing: 0;;
+}
 .passwordContainer, .confirmPasswordContainer {
   margin-top: 1.5rem;
+  background-color: var(--priBlue);
 }
 
 .passwordContainer input,
@@ -528,7 +569,6 @@ form input::placeholder {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #001E31;
   border-radius: 4px;
 }
 
@@ -542,9 +582,13 @@ form input::placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #C2EDD8;
+  color: var(--mint);
   padding: 1.125rem;
   cursor: pointer;
+}
+
+.faVisible:hover {
+  color: var(--purpleHov)
 }
 
 .formPage {
@@ -559,13 +603,14 @@ form input::placeholder {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background-color: var(--priBlue);
 }
 
 form button {
   margin: 1rem 0;
   padding: 1.2rem 0;
-  background-color: #D3CFE6;
-  color: #001E31;
+  background-color: var(--purple);
+  color: var(--priBlue);
   border: none;
   border-radius: 4px;
   text-transform: uppercase;
@@ -593,17 +638,17 @@ form button {
 }
 
 .logInFormBtn:hover, .signUpFormBtn:hover {
-  background-color: #b6afe0;
+  background-color: var(--purpleHov);
 }
 
 .logInFormBtn:active, .signUpFormBtn:active {
-  background-color: #D3CFE6;
+  background-color: var(--purple);
 }
 
 .logInLogoContainer {
   height: 8vh;
   width: 100vw;
-  background-color: #0B293C;
+  background-color: var(--secBlue);
   display: flex;
   align-items: center;
   position: fixed;
@@ -622,7 +667,7 @@ form button {
 }
 
 .linkToLogIn, .linkToSignUp {
-  color: white;
+  color: var(--white);
   font-weight: 600;
   text-decoration: none;
   transition: all 0.25s;
@@ -633,9 +678,17 @@ form button {
 }
 
 .errorIcon {
-  color: white;
+  color: var(--white);
   font-size: 5rem;
   padding-bottom: 1rem;
+  width: 200px;
+  height: 200px;
+  background-color: var(--secBlue);
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .formErrorMsg {
@@ -644,8 +697,17 @@ form button {
 }
 
 .faUser, .faYourPlaylist {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   margin-right: 0.5rem;
+  color: var(--mint);
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  background-color: var(--priBlue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.5px solid rgb(56, 56, 56);
 }
 
 .logOutContainer {
@@ -665,5 +727,5 @@ form button {
 }
 
 .yourPlaylistLink p:hover {
-  color: white;
+  color: var(--white);
 }
