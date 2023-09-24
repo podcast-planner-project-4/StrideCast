@@ -145,7 +145,6 @@ header {
   padding: 0 3.75rem;
   padding-top: 3rem;
   color: var(--priBlue);
-  box-shadow: 0 0 8px #001E31;
 }
 
 .sidebarNav {
@@ -224,7 +223,7 @@ select {
 .playlistContainer  {
   padding-top: 13vh;
   margin-left: 350px;
-  background: linear-gradient(#001929, #C2EDD8);
+  background: linear-gradient(var(--priBlue), #C2EDD8 120%);
   height: 100%;
 }
 
@@ -408,7 +407,7 @@ h2 {
   align-items: center;
   height: 100vh;
   position: fixed;
-  background: linear-gradient(135deg, var(--priBlue), #C2EDD8);
+  background: linear-gradient(135deg, var(--priBlue), #C2EDD8 200%);
 }
 
 .landingPageImg {
