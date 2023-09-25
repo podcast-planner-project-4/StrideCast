@@ -1,4 +1,4 @@
-import strideCastLogo from "../assets/strideCastLogo.png";
+import strideCast_purple from "../assets/strideCast_purple.png";
 import { Link } from "react-router-dom";
 import { auth } from "../Firebase";
 import { signOut } from "firebase/auth";
@@ -28,7 +28,7 @@ const Header = ({authUser, setLandingPage}) => {
           <Link to="/" className="logoLink" style={{ color: 'inherit', textDecoration: 'inherit'}}>
             <div className="logoContainer">
               <div>
-                <img className="logo" src={strideCastLogo}></img>
+                <img className="logo" src={strideCast_purple}></img>
               </div>
               <p className="logoWord">StrideCast</p>
             </div>

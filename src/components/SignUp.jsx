@@ -1,4 +1,4 @@
-import strideCastLogo from "../assets/strideCastLogo.png";
+import strideCast_purple from "../assets/strideCast_purple.png";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
@@ -63,7 +63,7 @@ function SignUp() {
         >
           <div className="logoContainer">
             <div>
-              <img className="logo" src={strideCastLogo}></img>
+              <img className="logo" src={strideCast_purple}></img>
             </div>
             <p className="logoWord">StrideCast</p>
           </div>
