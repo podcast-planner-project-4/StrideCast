@@ -27,7 +27,7 @@ const Playlist = ({ podcasts, playlistNameInput, authUser }) => {
       <div className="playlistHeader">
         <div className="playlistNameShuffle">
           <h2>{playlistNameInput}</h2>
-          <button className="faShuffleBtn">
+          <button className="faShuffleBtn" >
             <i className="fa-solid fa-shuffle faShuffleIcon"></i>
           </button>
         </div>

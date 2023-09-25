@@ -14,6 +14,7 @@ const Podcast = ({ podcast }) => {
           src={podcast.thumbnail}
           alt={`${podcast.title_original} cover art`}
         ></img>
+        <a href={podcast.link} target="_blank"><i class="fa-solid fa-link podcastLink"></i></a>
       </div>
       <div className="podcastInfoContainer">
         <div className="podcastInfoTop">

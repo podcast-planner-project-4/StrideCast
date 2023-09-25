@@ -78,6 +78,10 @@ header {
   cursor: pointer;
 }
 
+.logoWord {
+  font-size: 1.55rem;
+}
+
 .logoWord:hover {
   text-decoration: none;
 }
@@ -156,7 +160,7 @@ header {
 
 h1 {
   font-weight: 500;
-  font-size: 1.75rem;
+  font-size: 1.4rem;
   padding-bottom: 0.75rem;
   font-family: 'Raleway', sans-serif;
 }
@@ -282,15 +286,48 @@ footer a:hover {
   padding: 1.5rem;
   width: 1000px;
   cursor: pointer;
+  transition: all 0.25s;
 }
 
 .podcastContainer:hover {
-  background-color: #121212;
+  background-color: #181818;
+  opacity: 0.9;
+}
+
+.podcastContainer:hover .podcastLink {
+  opacity: 1;
 }
 
 .podcastCoverContainer {
   height: 200px;
   width: 200px;
+  position: relative;
+}
+
+.podcastCoverContainer a {
+  color: var(--triBlack);
+}
+
+.podcastLink {
+  font-size: 1.25rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: var(--purple);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.podcastLink:hover {
+  width: 54px;
+  height: 54px;
+  border-radius: 27px;
 }
 
 .podcastCover {
@@ -509,9 +546,8 @@ audio {
   position: relative;
   z-index: 0;
   width: 100%;
-  border-radius: 6px;
+  border-radius: 1rem;
   background-color: black;
-  opacity: 1;
 }
 
 .errorMsg {
@@ -639,7 +675,12 @@ form input::placeholder {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background-color: var(--triBlack)
+  background-color: var(--triBlack);
+}
+
+.formPage header {
+  position: fixed;
+  top: 0;
 }
 
 form button {
