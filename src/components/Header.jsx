@@ -37,7 +37,7 @@ const Header = ({authUser, setLandingPage}) => {
             ( <div className="logOutContainer">
                 <div className="yourPlaylistContainer">
                   <i class="fa-solid fa-headphones-simple faYourPlaylist"></i>                 
-                   <Link to="/yourPlaylist" className="yourPlaylistLink" style={{ color: 'inherit', textDecoration: 'inherit'}} onClick={handleRefresh}><p>YOUR PLAYLIST</p></Link>
+                   <Link to="/yourPlaylist" className="yourPlaylistLink" style={{ color: 'inherit', textDecoration: 'inherit'}} onClick={handleRefresh}><p>YOUR LIBRARY</p></Link>
                 </div>
                 <div className="logOutUserContainer">
                 <i className="fa-solid fa-user faUser"></i>
