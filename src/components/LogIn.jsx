@@ -1,4 +1,3 @@
-import strideCast_purple from "../assets/strideCast_purple.png";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase";
