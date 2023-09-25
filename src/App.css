@@ -314,6 +314,7 @@ footer a:hover {
   height: 50px;
   border-radius: 25px;
   background-color: var(--purple);
+  box-shadow: 0 0 10px rgba(24, 24, 24, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -528,6 +529,7 @@ h2 {
   border: none;
   cursor: pointer;
   margin-left: 1rem;
+  /* position: relative; */
 }
 
 .faShuffleIcon {
@@ -813,3 +815,27 @@ form button {
 .yourPlaylistLink p:hover {
   color: var(--white);
 }
+
+/* .hoverText {
+  position: absolute;
+  bottom: -250%;
+  left: -135%;
+  width: 120px;
+  background-color: rgb(42, 42, 42);
+  padding: 1rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  color: white;
+  z-index: 300;
+  letter-spacing: 0.02rem;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.faShuffleBtn:hover .hoverText {
+  opacity: 1;
+}
+
+.faDragContainer:hover .hoverText {
+  opacity: 1;
+} */

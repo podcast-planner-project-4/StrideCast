@@ -14,7 +14,7 @@ const Podcast = ({ podcast }) => {
           src={podcast.thumbnail}
           alt={`${podcast.title_original} cover art`}
         ></img>
-        <a href={podcast.link} target="_blank"><i class="fa-solid fa-link podcastLink"></i></a>
+        <a href={podcast.link} target="_blank"><i class="fa-solid fa-link podcastLink" title="Visit website"></i></a>
       </div>
       <div className="podcastInfoContainer">
         <div className="podcastInfoTop">
@@ -27,7 +27,7 @@ const Podcast = ({ podcast }) => {
               </div>
             </div>
           </div>
-          <i className="fa-solid fa-bars faDragIcon"></i>
+          <i className="fa-solid fa-bars faDragIcon" title="Drag and drop"></i>
         </div>
         <p className="podcastDescription">{trimmedDesc}</p>
         <audio controls>
