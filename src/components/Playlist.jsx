@@ -27,13 +27,14 @@ const Playlist = ({ podcasts, playlistNameInput, authUser }) => {
       <div className="playlistHeader">
         <div className="playlistNameShuffle">
           <h2>{playlistNameInput}</h2>
-          <button className="faShuffleBtn">
-            <i className="fa-solid fa-shuffle faShuffleIcon"></i>
+          <button className="faShuffleBtn" >
+            <i className="fa-solid fa-shuffle faShuffleIcon" title="Shuffle playlist"></i>
           </button>
         </div>
         <div className="savePlaylistContainer">
           {authUser ? 
-            (<i className={`${favourited ? 'fa-solid' : 'fa-regular'} fa-heart favouriteIcon`} onClick={handleFavourite}>
+            (<i className={`${favourited ? 'fa-solid' : 'fa-regular'} fa-heart favouriteIcon`} title={favourited ? 'Remove from library' : 'Add to library'}
+            onClick={handleFavourite}>
             </i> )
             :
             (<Link to="/signup" className="savePlaylistLink">

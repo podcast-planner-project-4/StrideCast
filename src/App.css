@@ -6,9 +6,20 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
+:root {
+  --priBlack: #212121;
+  --secBlack: #131313;
+  --triBlack: #0F0F0F; 
+  --purple: #C062FF;
+  --purpleBtn: #ae37fe;
+  --white: rgb(251, 251, 253);
+  --grey: rgb(33, 33, 33);
+  --lightgrey: rgb(104, 104, 104);
+}
+
 html {
   font-size: 16px;
-  color: white;
+  color: var(--white);
   font-family: 'Poppins', sans-serif;
 }
 
@@ -24,16 +35,17 @@ ul {
 .App {
   height: 350vh;
   width: 100vw;
-  background-color: #001E31;
+  background-color: var(--priBlack);
 }
 
 header {
   width: 100vw;
   height: 8vh;
-  background-color:#0B293C;
+  background-color: var(--secBlack);
   display: flex;
   position: fixed;
   z-index: 5;
+  box-shadow: 0 0 8px rgba(61, 61, 61, 0.6);
 }
 
 .headerContainer {
@@ -52,18 +64,22 @@ header {
   font-family: 'Raleway', sans-serif;
   letter-spacing: 0.025rem;
   font-weight: 600;
-  color: white;
+  color: var(--white);
 }
 
 .logo {
   width: 50px;
   height: 50px;
-  object-fit: cover;
+  object-fit: contain;
   display: flex;
   justify-content: center;
   align-content: center;
   margin-right: 0.5rem;
   cursor: pointer;
+}
+
+.logoWord {
+  font-size: 1.55rem;
 }
 
 .logoWord:hover {
@@ -72,14 +88,14 @@ header {
 
 .topNavBtns,
 .logOutContainer {
-  color: white;
+  color: var(--white);
   display: flex;
   align-items: center;
 }
 
 .topNavBtns button,
 .logOutContainer button {
-  padding: 1rem 1.75rem;
+  padding: 0.95rem 1.3rem;
   border-radius: 2rem;
   border: none;
   letter-spacing: 0.025rem;
@@ -88,31 +104,31 @@ header {
 }
 
 .signUpBtn {
-  background-color: #001E31;
-  border: 1px solid #001E31;
+  background-color: var(--triBlack);
+  border: 1px solid var(--triBlack);
   margin-right: 1rem;
-  color: white; 
+  color: var(--white); 
 }
 
 .signUpBtn:hover {
-  border: 0.5px solid white;
+  border: 1px solid var(--grey);
 }
 
 .logInBtn, .logOutBtn {
-  background-color: #D3CFE6;
-  border: 1px solid #D3CFE6;
-  color: #001E31;
+  background-color: var(--purpleBtn);
+  border: 1px solid var(--purpleBtn);
+  color: var(--white);
   transition: all 0.25s;
 }
 
 .logInBtn:hover,
 .logOutBtn:hover {
-  background-color: #b6afe0;
+  background-color: var(--purple);
 }
 
 .logInBtn:active,
 .logOutBtn:active {
-  background-color: #D3CFE6;
+  background-color: var(--purpleBtn);
 }
 
 .logOutBtn {
@@ -120,20 +136,20 @@ header {
 }
 
 .logOutContainer p {
-  color: grey;
+  color: var(--grey);
   font-size: 0.9rem;
 }
 
 .sidebar {
   width: 400px;
   height: 92vh;
-  background-color: #C2EDD8;
+  background-color: var(--triBlack);
   position: fixed;
   top: 8vh;
   z-index: 1;
   padding: 0 3.75rem;
   padding-top: 3rem;
-  color: #001E31;
+  color: var(--white);
 }
 
 .sidebarNav {
@@ -144,23 +160,42 @@ header {
 
 h1 {
   font-weight: 500;
-  font-size: 1.75rem;
+  font-size: 1.4rem;
   padding-bottom: 0.75rem;
   font-family: 'Raleway', sans-serif;
 }
 
+.sidebar p {
+  color: rgb(189, 189, 189);
+}
+
 .sidebar label {
   margin-bottom: 0.5rem;
+  color: var(--lightgrey);
 }
 
 .sidebar input {
   padding: 1rem 0 1rem 0.5rem;
-  background-color: #001E31;
-  border: none;
-  color: white;
+  color: var(--white);
   border-radius: 6px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: var(--priBlack);
+  letter-spacing: 0.03rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
 }
+
+.sidebar input:focus {
+  border: 1px solid var(--white);
+}
+
+.sidebar p {
+  line-height: 1.25rem;
+}
+
+/*This code is to hide the default arrows in the number input. When hidding, you can use your own arrows from font-awesome.
+*/
 
 input[type="number"] {
   -webkit-appearance: textfield;
@@ -172,21 +207,24 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 
-/*This code is to hide the default arrows in the number input. When hidding, you can use your own arrows from font-awesome.
-*/
-
 select {
   padding: 1rem 0 1rem 0.5rem;
-  background-color: #001E31;
+  background-color: var(--priBlack);
   border: none;
-  color: white;
+  color: var(--white);
   border-radius: 6px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.03rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
 }
 
+.faSearch {
+  padding-right: 0.25rem;
+}
 .sidebarNav button {
-  background-color: #D3CFE6;
-  color: #001E31;
+  background-color: var(--purpleBtn);
+  color: var(--priBlue);
   border: none;
   padding: 1rem 1.25rem;
   border-radius: 6px;
@@ -199,25 +237,18 @@ select {
 }
 
 .sidebarNav button:hover {
-  background-color: #b6afe0;
+  background-color: var(--purple);
 }
 
 .sidebarNav button:active {
-  background-color: #D3CFE6;
-}
-
-.sidebarImg {
-  position: absolute;
-  z-index: 10;
-  bottom: 8vh;
-  left: -3%;
-  transform: rotate(5deg);
-  width: 105%;
+  background-color: var(--purpleBtn);
 }
 
 .playlistContainer  {
   padding-top: 13vh;
   margin-left: 350px;
+  background: linear-gradient(rgba(50, 4, 80, 0.55), var(--secBlack) 35%);
+  height: 100%;
 }
 
 footer {
@@ -227,28 +258,77 @@ footer {
   width: 400px;
   padding: 0 3.75rem;
   font-size: 0.7rem;
-  color: #001E31;
-
+  color: var(--lightgrey);
 }
 
-.juno, .copyright {
+footer a {
+  color: var(--lightgrey);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: var(--white);
+}
+
+.junoCopy {
   font-size: 0.65rem;
-  padding-bottom: 0.15rem;
+  padding-top: 0.25rem;
 }
 
 .podcastContainer {
   margin: 1.5rem auto;
-  background-color: #0B293C;
+  background-color: var(--triBlack);
   border-radius: 15px;
   display: flex;
   padding: 1.5rem;
   width: 1000px;
   cursor: pointer;
+  transition: all 0.25s;
+}
+
+.podcastContainer:hover {
+  background-color: #181818;
+  opacity: 0.9;
+}
+
+.podcastContainer:hover .podcastLink {
+  opacity: 1;
 }
 
 .podcastCoverContainer {
   height: 200px;
   width: 200px;
+  position: relative;
+}
+
+.podcastCoverContainer a {
+  color: var(--triBlack);
+}
+
+.podcastLink {
+  font-size: 1.25rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: var(--purple);
+  box-shadow: 0 0 10px rgba(24, 24, 24, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.podcastLink:hover {
+  width: 54px;
+  height: 54px;
+  border-radius: 27px;
 }
 
 .podcastCover {
@@ -284,34 +364,34 @@ footer {
   text-decoration: none;
 }
 
-.playBtn {
-  background-color: #C2EDD8;
-  border: none;
-  color: #001E31;
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  margin-right: 1rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .podcastTitle {
   padding-right: 1rem;
   letter-spacing: 0.025rem;
+  margin-bottom: 0.1rem;
+  font-weight: 500;
+}
+
+.podcastAuthorContainer {
+  display: flex;
+  align-items: center;
+  color: var(--lightgrey);
 }
 
 .podcastAuthor {
-  color: grey;
   font-size: 0.9rem;
+  margin-left: 0.2rem
+}
+
+.faPodcast {
+  font-size: 1rem;
+  color: var(--purple);
 }
 
 .podcastDescription {
-  color: rgb(189, 189, 189);
+  color: rgb(160, 160, 160);
   padding-top: 0.25rem;
   width: 90%;
+  font-size: 0.925rem;
 }
 
 .podcastLength {
@@ -328,8 +408,14 @@ h2 {
 
 .faDragIcon {
   align-self: flex-start;
-  color: #C2EDD8;
+  color: var(--purple);
   cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.25s;
+}
+
+.faDragIcon:hover {
+  font-size: 1.15rem;
 }
 
 .playlistHeader {
@@ -356,31 +442,38 @@ h2 {
 }
 
 .favouriteIcon {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  background-color: #C2EDD8;
   margin-left: 0.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #001223;
+  color: var(--purpleBtn);
   cursor: pointer;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  transition: all 0.25s;
+}
+
+.favouriteIcon:hover {
+  font-size: 1.6rem;
+}
+
+.favouriteIcon:active {
+  font-size: 1.75rem;
 }
 
 .landingPageContainer {
-  margin-left: 400px;
+  margin-left: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100vw;
   position: fixed;
+  background: linear-gradient(135deg, var(--triBlack), var(--purple) 500%);
 }
 
 .landingPageImg {
-  width: 60%;
+  width: 25%;
 }
 
 .welcome {
@@ -404,12 +497,13 @@ h2 {
   padding-top: 8vh;
   margin-left: 400px;
   position: fixed;
+  background: linear-gradient(135deg, var(--triBlack), var(--purple) 500%);
 }
 
 .spinner {
-  border: 25px solid black;
+  border: 25px solid var(--triBlack);
   border-radius: 50%;
-  border-top: 25px solid #C2EDD8;
+  border-top: 25px solid var(--purple);
   width: 100px;
   height: 100px;
   animation: spin 1s linear infinite;
@@ -431,15 +525,21 @@ h2 {
 }
 
 .faShuffleBtn {
-  background-color: #001E31;
+  background-color: transparent;
   border: none;
   cursor: pointer;
   margin-left: 1rem;
+  /* position: relative; */
 }
 
 .faShuffleIcon {
-  color: #C2EDD8;
-  font-size: 1.5rem;
+  color: var(--purple);
+  font-size: 1.25rem;
+  transform: all 0.25s;
+}
+
+.faShuffleIcon:hover {
+  font-size: 1.35rem;
 }
 
 audio {
@@ -448,6 +548,8 @@ audio {
   position: relative;
   z-index: 0;
   width: 100%;
+  border-radius: 1rem;
+  background-color: black;
 }
 
 .errorMsg {
@@ -461,20 +563,16 @@ audio {
   position: fixed;
   font-size: 1rem;
   padding: 3.2rem 0 0 3.2rem;
-}
-
-.errorBorder{
-  border: 3px solid rgb(252, 3, 3);
-  border-radius: 8px;
+  background: linear-gradient(135deg, var(--triBlack), var(--purple) 500%);
 }
 
 .signUpLink {
-  color: white;
+  color: var(--white);
   text-decoration: none;
 }
 
 .logInLink {
-  color: #001e31;
+  color: var(--priBlue);
   text-decoration: none;
 }
 
@@ -486,7 +584,7 @@ audio {
   width: 450px;
   padding: 3rem 2rem;
   border-radius: 6px;
-  background-color: #0B293C;
+  background-color: var(--secBlack);
   margin-top: 5rem;
 }
 
@@ -506,17 +604,33 @@ form input {
   border-radius: 4px;
   border: none;
   padding: 1.2rem 0.8rem;
-  background-color: #001E31;
-  color: white;
+  background-color: var(--priBlack);
+  color: var(--white);
+  letter-spacing: 0.03rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  outline: none
+}
+
+form input:focus {
+  border: 1px solid var(--lightgrey);
 }
 
 form input::placeholder {
   color: grey;
-  letter-spacing: 0.04rem;
+  letter-spacing: 0.03rem;
 }
 
+.sidebarNav input::placeholder {
+  color: var(--white);
+  opacity: 1;
+  letter-spacing: 0.03rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+}
 .passwordContainer, .confirmPasswordContainer {
   margin-top: 1.5rem;
+  background-color: var(--priBlack);
 }
 
 .passwordContainer input,
@@ -528,8 +642,8 @@ form input::placeholder {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #001E31;
   border-radius: 4px;
+  background-color: var(--priBlack);
 }
 
 .signUpPassword, .signUpConfirmPassword {
@@ -542,9 +656,13 @@ form input::placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #C2EDD8;
+  color: var(--purple);
   padding: 1.125rem;
   cursor: pointer;
+}
+
+.faVisible:hover {
+  color: var(--purpleBtn)
 }
 
 .formPage {
@@ -559,13 +677,19 @@ form input::placeholder {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background-color: var(--triBlack);
+}
+
+.formPage header {
+  position: fixed;
+  top: 0;
 }
 
 form button {
   margin: 1rem 0;
   padding: 1.2rem 0;
-  background-color: #D3CFE6;
-  color: #001E31;
+  background-color: var(--purpleBtn);
+  color: var(--white);
   border: none;
   border-radius: 4px;
   text-transform: uppercase;
@@ -579,13 +703,14 @@ form button {
   text-align: center;
   font-size: 0.8rem;
   letter-spacing: 0.04rem;
+  color: var(--lightgrey);
 }
 
 .homeLink {
   font-size: 0.7rem;
   margin-top: 2rem;
   cursor: pointer;
-  color: grey;
+  color: var(--lightgrey);
 }
 
 .logInFormBtn {
@@ -593,17 +718,17 @@ form button {
 }
 
 .logInFormBtn:hover, .signUpFormBtn:hover {
-  background-color: #b6afe0;
+  background-color: var(--purple);
 }
 
 .logInFormBtn:active, .signUpFormBtn:active {
-  background-color: #D3CFE6;
+  background-color: var(--purpleBtn);
 }
 
 .logInLogoContainer {
   height: 8vh;
   width: 100vw;
-  background-color: #0B293C;
+  background-color: var(--secBlack);
   display: flex;
   align-items: center;
   position: fixed;
@@ -622,8 +747,8 @@ form button {
 }
 
 .linkToLogIn, .linkToSignUp {
-  color: white;
-  font-weight: 600;
+  color: var(--white);
+  font-weight: 500;
   text-decoration: none;
   transition: all 0.25s;
 }
@@ -633,9 +758,17 @@ form button {
 }
 
 .errorIcon {
-  color: white;
+  color: var(--purpleBtn);
   font-size: 5rem;
   padding-bottom: 1rem;
+  width: 200px;
+  height: 200px;
+  background-color: var(--secBlack);
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .formErrorMsg {
@@ -644,8 +777,17 @@ form button {
 }
 
 .faUser, .faYourPlaylist {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   margin-right: 0.5rem;
+  color: var(--purple);
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  background-color: var(--priBlack);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.35);
 }
 
 .logOutContainer {
@@ -659,11 +801,41 @@ form button {
   align-items: center;
 }
 
+.logOutUserContainer p, .yourPlaylistContainer p {
+  color: rgb(160, 160, 160);
+  font-weight: 500;
+  letter-spacing: 0.015rem;
+}
+
 .yourPlaylistLink {
   cursor: pointer;
-  transition: all 0.25s;
+  transition: all 0.5s;
 }
 
 .yourPlaylistLink p:hover {
-  color: white;
+  color: var(--white);
 }
+
+/* .hoverText {
+  position: absolute;
+  bottom: -250%;
+  left: -135%;
+  width: 120px;
+  background-color: rgb(42, 42, 42);
+  padding: 1rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  color: white;
+  z-index: 300;
+  letter-spacing: 0.02rem;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.faShuffleBtn:hover .hoverText {
+  opacity: 1;
+}
+
+.faDragContainer:hover .hoverText {
+  opacity: 1;
+} */

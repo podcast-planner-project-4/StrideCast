@@ -1,9 +1,12 @@
-import strideCastLogo from "../assets/strideCastLogo.png";
+import strideCast_purple from "../assets/strideCast_purple.png";
 import { Link } from "react-router-dom";
 import { auth } from "../Firebase";
 import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({authUser, setLandingPage}) => {
+
+  const navigate = useNavigate();
 
   const signOutUser = () => {
     signOut(auth)
@@ -14,6 +17,10 @@ const Header = ({authUser, setLandingPage}) => {
       .catch((error) => console.log(error));
   };
 
+  const handleRefresh = () => {
+    navigate.push("/yourPlaylist");
+  };
+
   return (
     <>
       <header>
@@ -21,7 +28,7 @@ const Header = ({authUser, setLandingPage}) => {
           <Link to="/" className="logoLink" style={{ color: 'inherit', textDecoration: 'inherit'}}>
             <div className="logoContainer">
               <div>
-                <img className="logo" src={strideCastLogo}></img>
+                <img className="logo" src={strideCast_purple}></img>
               </div>
               <p className="logoWord">StrideCast</p>
             </div>
@@ -29,10 +36,8 @@ const Header = ({authUser, setLandingPage}) => {
           {authUser ? 
             ( <div className="logOutContainer">
                 <div className="yourPlaylistContainer">
-                  <i className="fa-solid fa-headphones-simple faYourPlaylist"></i>                 
-                   <Link to="/yourPlaylist" className="yourPlaylistLink" style={{ color: 'inherit', textDecoration: 'inherit'}}>
-                    <p>YOUR PLAYLIST</p>
-                    </Link>
+                  <i class="fa-solid fa-headphones-simple faYourPlaylist"></i>                 
+                   <Link to="/yourPlaylist" className="yourPlaylistLink" style={{ color: 'inherit', textDecoration: 'inherit'}} onClick={handleRefresh}><p>YOUR PLAYLIST</p></Link>
                 </div>
                 <div className="logOutUserContainer">
                 <i className="fa-solid fa-user faUser"></i>

@@ -1,8 +1,9 @@
-import strideCastLogo from "../assets/strideCastLogo.png";
+import strideCast_purple from "../assets/strideCast_purple.png";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase";
 import { useState } from "react";
+import Header from "./Header";
 
 function LogIn() {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -29,20 +30,7 @@ function LogIn() {
 
   return (
     <div className="formPage">
-      <div className="logInLogoContainer">
-        <Link
-          to="/"
-          className="logoLink"
-          style={{ color: "inherit", textDecoration: "inherit" }}
-        >
-          <div className="logoContainer">
-            <div>
-              <img className="logo" src={strideCastLogo}></img>
-            </div>
-            <p className="logoWord">StrideCast</p>
-          </div>
-        </Link>
-      </div>
+      <Header />
       <div className="formContainer">
         <h2>Log in</h2>
         <form onSubmit={loginUser}>
@@ -79,7 +67,7 @@ function LogIn() {
           Don't have an account?{" "}
           <Link to="/signup" className="linkToSignUp">
             {" "}
-            Sign up here
+            Sign up now
           </Link>
           .
         </p>

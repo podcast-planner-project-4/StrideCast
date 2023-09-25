@@ -36,9 +36,9 @@ const SideBar = ({
               required
               pattern="\d+"
               onKeyDown={handleKeyDown}
-              placeholder="Time in minutes"
+              placeholder="Enter time in minutes"
             ></input>
-            <label htmlFor="selectedGenre">Select your genre</label>
+            <label htmlFor="selectedGenre">Select your genre:</label>
             <select
               value={selectedGenre}
               id="selectedGenre"
@@ -46,7 +46,7 @@ const SideBar = ({
               required
             >
               {/* there must be more dry way to achieve getting all the option values. do we call the genre API, set parameters, and map the results? */}
-              <option value="" disabled defaultValue>
+              <option value="" disabled defaultValue className="defaultGenre">
                 Choose a genre
               </option>
               <option value="144">Personal Finance</option>
@@ -72,7 +72,7 @@ const SideBar = ({
               <option value="135">True Crime</option>
             </select>
 
-            <label htmlFor="playlistName">Name your playlist</label>
+            <label htmlFor="playlistName">Name your playlist:</label>
             <input
               type="text"
               id="playlistName"
@@ -80,7 +80,7 @@ const SideBar = ({
               onChange={handlePlaylistNameInputChange}
               required
             />
-            <button type="submit">Search</button>
+            <button type="submit"><i className="fa-solid fa-magnifying-glass faSearch"></i>Search</button>
           </form>
         </div>
       </div>
