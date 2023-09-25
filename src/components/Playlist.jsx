@@ -19,6 +19,14 @@ const Playlist = ({ podcasts, playlistNameInput, authUser }) => {
       }  else {
         update(userRef, { playlistName: null, podcasts: null })
     }
+
+    const heartIcon = document.querySelector(".favouriteIcon");
+    heartIcon.classList.add("ripple");
+
+    // Remove the 'ripple' class after the animation is completed
+    setTimeout(() => {
+      heartIcon.classList.remove("ripple");
+    }, 600); // Adjust the duration of the animation (in milliseconds) as needed
   }
 }
 
