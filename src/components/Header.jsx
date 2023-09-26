@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
 import { auth } from "../Firebase";
 import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import StrideCast_purple from '../assets/StrideCast_purple.png'
 
 const Header = ({authUser, setLandingPage}) => {
-
-  const navigate = useNavigate();
 
   const signOutUser = () => {
     signOut(auth)
@@ -15,10 +12,6 @@ const Header = ({authUser, setLandingPage}) => {
         setLandingPage(true)
       })
       .catch((error) => console.log(error));
-  };
-
-  const handleRefresh = () => {
-    navigate.push("/yourPlaylist");
   };
 
   return (
@@ -36,8 +29,8 @@ const Header = ({authUser, setLandingPage}) => {
           {authUser ? 
             ( <div className="logOutContainer">
                <div className="yourPlaylistContainer">
-                  <i class="fa-solid fa-thumbtack faYourLibrary"></i>                 
-                  <Link to="/yourPlaylist" className="yourPlaylistLink" style={{ color: 'inherit', textDecoration: 'inherit'}} onClick={handleRefresh}><p>YOUR LIBRARY</p></Link>
+                  <i className="fa-solid fa-thumbtack faYourLibrary"></i>                 
+                  <p>YOUR LIBRARY</p>
                 </div>
                 <div className="logOutUserContainer">
                 <i className="fa-solid fa-user faUser"></i>
