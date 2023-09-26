@@ -462,33 +462,6 @@ h2 {
   font-size: 1.75rem;
 }
 
-.landingPageContainer {
-  margin-left: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  background: linear-gradient(135deg, var(--triBlack), var(--purple) 500%);
-}
-
-.landingPageImg {
-  width: 25%;
-}
-
-.welcome {
-  font-size: 3rem;
-  padding: 1rem 0;
-}
-
-.info {
-  font-size: 1.5rem;
-  text-align: center;
-  padding: 0 5rem;
-}
-
 .spinnerContainer {
   width: calc(100vw - 400px);
   height: 100vh;
@@ -524,6 +497,12 @@ h2 {
 .playlistNameShuffle {
   display: flex;
   align-items: center;
+}
+
+.playlistNameShuffle h2 {
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.03rem;
+  font-weight: 500;
 }
 
 .faShuffleBtn {
@@ -823,27 +802,88 @@ form button {
   color: var(--white);
 }
 
-/* .hoverText {
-  position: absolute;
-  bottom: -250%;
-  left: -135%;
-  width: 120px;
-  background-color: rgb(42, 42, 42);
-  padding: 1rem 0.5rem;
+.landingPageContainer {
+  padding-top: 13.5vh;
+  margin-left: 390px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: calc(100vw - 390px);
+  background: linear-gradient(rgba(50, 4, 80, 0.55), var(--secBlack) 30%);
+}
+
+.landingPageContainer h2 {
+  margin-left: 52px;
+  font-size: 1.5rem;
+  letter-spacing: 0.04rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.landingPageContainer ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bestPodcastContainer {
+  width: 185px;
+  height: 290px;
+  padding: 1rem;
+  background-color: var(--priBlack);
+  margin: 0.75rem;
+  margin-bottom: 2rem;
   border-radius: 6px;
-  font-size: 0.7rem;
-  color: white;
-  z-index: 300;
-  letter-spacing: 0.02rem;
+  box-shadow: 0 0 8px #212121c3;
+  cursor: pointer;
+  transition: all 0.5s;
+  color: rgb(159, 159, 159);
+  font-size: 0.9rem;
+}
+
+.bestPodcastContainer:hover {
+  background-color: rgb(41, 41, 41);
+}
+
+.bestPodcastContainer img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.bestPocastImgContainer {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.faBestLink {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: var(--lightPurple);
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--triBlack);
+  bottom: 13px;
+  right: 10px;
   opacity: 0;
   transition: all 0.5s;
 }
 
-.faShuffleBtn:hover .hoverText {
+.faBestLink:hover {
+  width: 54px;
+  height: 54px;
+  border-radius: 27px;
+}
+
+.bestPodcastContainer:hover .faBestLink {
   opacity: 1;
 }
 
-.faDragContainer:hover .hoverText {
-  opacity: 1;
-} */
+.bestPodcastAuthor {
+  color: var(--lightgrey);
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
 
