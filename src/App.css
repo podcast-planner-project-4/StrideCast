@@ -663,7 +663,7 @@ form input::placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--purple);
+  color: var(--lightPurple);
   padding: 1.125rem;
   cursor: pointer;
 }
