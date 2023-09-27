@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Client } from "podcast-api";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
+import Library from "./components/Library";
 import LandingPage from "./components/LandingPage";
 import SideBar from "./components/SideBar";
 import Playlist from "./components/Playlist";
@@ -14,6 +15,7 @@ import ErrorPage from "./components/ErrorPage";
 import "./App.css";
 import { auth } from "./Firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import { getDatabase, ref, onValue } from 'firebase/database'
 
 function App() {
   const [podcasts, setPodcasts] = useState([]);
@@ -25,6 +27,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("");
   const [selectLessTime, setSelectLessTime] = useState("");
   const [authUser, setAuthUser] = useState(null)
+  const [userData, setUserData ] = useState([])
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -93,6 +96,21 @@ function App() {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
         setAuthUser(user);
+        const database = getDatabase();
+        const userUid = user.uid;
+        const userRef = ref(database, `users/${userUid}/podcasts`)
+        
+        onValue(userRef, (snapshot) => {
+          const data = snapshot.val()
+          const renderUserData = []
+
+          for(let key in data) { 
+            renderUserData.push(data[key])
+          }
+          setUserData(renderUserData)
+        })
+
+
       } else {
         setAuthUser(null);
       }
@@ -101,6 +119,8 @@ function App() {
       listen();
     };
   }, []);
+
+  console.log(userData)
 
   return (
     <>
@@ -150,6 +170,7 @@ function App() {
               </>
             }
           ></Route>
+          <Route path="/library" element={<Library userData={userData}/>} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="*" element={<ErrorPage />} />

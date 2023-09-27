@@ -30,7 +30,7 @@ const Header = ({authUser, setLandingPage}) => {
             ( <div className="logOutContainer">
                <div className="yourPlaylistContainer">
                   <i className="fa-solid fa-thumbtack faYourLibrary"></i>                 
-                  <p>YOUR LIBRARY</p>
+                  <p><Link to="/library">YOUR LIBRARY</Link></p>
                 </div>
                 <div className="logOutUserContainer">
                 <i className="fa-solid fa-user faUser"></i>
