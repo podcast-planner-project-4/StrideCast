@@ -12,42 +12,36 @@ import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import ErrorPage from "./components/ErrorPage";
 import "./App.css";
+import { auth } from "./Firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
   const [podcasts, setPodcasts] = useState([]);
-  const [walkDuration, setWalkDuration] = useState(""); // maybe, we want to set this to 0?
+  const [walkDuration, setWalkDuration] = useState(""); 
   const [selectedGenre, setSelectedGenre] = useState("");
   const [playlistNameInput, setPlaylistNameInput] = useState("");
   const [landingPage, setLandingPage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [selectLessTime, setSelectLessTime] = useState("");
+  const [authUser, setAuthUser] = useState(null)
 
   const handleSubmit = (event) => {
-    setSelectLessTime("");
     event.preventDefault();
+    setSelectLessTime("");
     setIsLoading(true);
     setErrorMessage("");
-    const apiKey = import.meta.env.VITE_API_KEY;
-    const baseUrl = "https://listen-api.listennotes.com/api/v2";
-    const client = Client({ apiKey });
-    const newUrl = new URL(baseUrl);
-    newUrl.pathname = "/search";
 
     if (walkDuration > 720) {
       setIsLoading(false);
       setSelectLessTime("Please select less time.");
     }
-
-    // client.fetchPodcastGenres({
-    //   top_level_only: 1,
-
-    // }).then((response) => {
-
-    //   console.log(response.data);
-    // }).catch((error) => {
-    //   console.log(error)
-    // });
+    
+    const apiKey = import.meta.env.VITE_API_KEY;
+    const baseUrl = "https://listen-api.listennotes.com/api/v2";
+    const client = Client({ apiKey });
+    const newUrl = new URL(baseUrl);
+    newUrl.pathname = "/search";
 
     client
       .search({
@@ -83,17 +77,8 @@ function App() {
     setLandingPage(false);
   };
 
-  useEffect(() => {}, [walkDuration, selectedGenre, handleSubmit]);
+  useEffect(() => {}, [walkDuration, selectedGenre, handleSubmit]); //let's revisit this. what is even happening in this useEffect. 
 
-  // We want the API call when user clicks on the submit button (maybe a dependency array situation)
-
-  // have our form and in the select we will a useState, that state will update the value and that value will be placed in the query
-
-  // const handleWalkDurationChange = (event) => {
-  //   const inputValue = event.target.value;
-  //   if (/^\d+$/.test(inputValue) || inputValue === "") {
-  //     setWalkDuration(inputValue);
-  //   }
   const handleWalkDurationChange = (event) => {
     const newValue = event.target.value;
     if (newValue.startsWith("0")) {
@@ -104,6 +89,19 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    const listen = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAuthUser(user);
+      } else {
+        setAuthUser(null);
+      }
+    });
+    return () => {
+      listen();
+    };
+  }, []);
+
   return (
     <>
       <div className="App">
@@ -112,7 +110,7 @@ function App() {
             path="/"
             element={
               <>
-                <Header />
+                <Header authUser={authUser}setLandingPage={setLandingPage}/>
                 <SideBar
                   walkDuration={walkDuration}
                   handleWalkDurationChange={handleWalkDurationChange}
@@ -127,7 +125,7 @@ function App() {
                   handleSubmit={handleSubmit}
                   errorMessage={errorMessage}
                 />
-                {landingPage ? (
+                { landingPage ? (
                   <LandingPage />
                 ) : selectLessTime ? (
                   <div className="errorMsg">
@@ -143,6 +141,7 @@ function App() {
                   </div>
                 ) : (
                   <Playlist
+                    authUser={authUser}
                     podcasts={podcasts}
                     playlistNameInput={playlistNameInput}
                   />

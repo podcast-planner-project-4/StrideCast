@@ -1,9 +1,9 @@
-import strideCastLogo from "../assets/strideCastLogo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { auth, database } from "../Firebase";
 import { set, ref } from "firebase/database";
+import Header from "./Header";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -12,9 +12,9 @@ function SignUp() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
-  // const [passwordLength, setPasswordLength] = useState('')
 
   const navigate = useNavigate();
+
   const signUpUser = (e) => {
     e.preventDefault();
     if (password === confirmPassword && password.length >= 6) {
@@ -55,20 +55,7 @@ function SignUp() {
 
   return (
     <div className="formPage">
-      <div className="logInLogoContainer">
-        <Link
-          to="/"
-          className="logoLink"
-          style={{ color: "inherit", textDecoration: "inherit" }}
-        >
-          <div className="logoContainer">
-            <div>
-              <img className="logo" src={strideCastLogo}></img>
-            </div>
-            <p className="logoWord">StrideCast</p>
-          </div>
-        </Link>
-      </div>
+      <Header />
       <div className="formContainer">
         <h2>Sign up</h2>
         <form onSubmit={signUpUser}>
@@ -91,7 +78,7 @@ function SignUp() {
               required
             ></input>
             <i
-              class={`fa-regular ${
+              className={`fa-regular ${
                 passwordVisible ? "fa-eye" : "fa-eye-slash"
               } faVisible`}
               onClick={handlePasswordVisibility}
@@ -108,14 +95,13 @@ function SignUp() {
               required
             ></input>
             <i
-              class={`fa-regular ${
+              className={`fa-regular ${
                 confirmPasswordVisible ? "fa-eye" : "fa-eye-slash"
               } faVisible`}
               onClick={handleConfirmPasswordVisibility}
             ></i>
           </div>
-          {<p>{passwordErrorMessage}</p>}
-
+          {<p className="formErrorMsg">{passwordErrorMessage}</p>}
           <button type="submit" className="signUpFormBtn">
             Create an account
           </button>
