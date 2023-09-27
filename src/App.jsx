@@ -8,6 +8,7 @@ import LandingPage from "./components/LandingPage";
 import SideBar from "./components/SideBar";
 import Playlist from "./components/Playlist";
 import Footer from "./components/Footer";
+import Spotify from "./components/Spotify";
 import APILoadingState from "./components/APILoadingState";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
@@ -166,6 +167,7 @@ function App() {
                     playlistNameInput={playlistNameInput}
                   />
                 )}
+                <Spotify />
                 <Footer />
               </>
             }
