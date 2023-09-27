@@ -9,8 +9,16 @@ const SideBar = ({
 }) => {
   const handleKeyDown = (event) => {
     const keyCode = event.which || event.keyCode;
-    // Allow digits and backspace
-    if ((keyCode < 48 || keyCode > 57) && keyCode !== 8) {
+    if (
+      (keyCode < 48 || keyCode > 57) &&
+      keyCode !== 8 &&
+      keyCode !== 13 &&
+      keyCode !== 9 &&
+      keyCode > 37 &&
+      keyCode < 40 &&
+      keyCode >= 96 &&
+      keyCode <= 105
+    ) {
       event.preventDefault(); // Prevent non-digit input
     }
   };
@@ -80,7 +88,9 @@ const SideBar = ({
               onChange={handlePlaylistNameInputChange}
               required
             />
-            <button type="submit"><i className="fa-solid fa-magnifying-glass faSearch"></i>Search</button>
+            <button type="submit">
+              <i className="fa-solid fa-magnifying-glass faSearch"></i>Search
+            </button>
           </form>
         </div>
       </div>
