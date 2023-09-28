@@ -1223,3 +1223,8 @@ form button {
 .spotifyContainer:hover .faClose {
   opacity: 1;
 }
+
+.delete {
+  font-size: 200px;
+  color: #96ff50;
+}
