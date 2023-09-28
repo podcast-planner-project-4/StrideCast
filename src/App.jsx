@@ -3,10 +3,12 @@ import { useState, useEffect } from "react";
 import { Client } from "podcast-api";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
+import Library from "./components/Library";
 import LandingPage from "./components/LandingPage";
 import SideBar from "./components/SideBar";
 import Playlist from "./components/Playlist";
 import Footer from "./components/Footer";
+import Spotify from "./components/Spotify";
 import APILoadingState from "./components/APILoadingState";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
@@ -14,17 +16,19 @@ import ErrorPage from "./components/ErrorPage";
 import "./App.css";
 import { auth } from "./Firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import { getDatabase, ref, onValue } from "firebase/database";
 
 function App() {
   const [podcasts, setPodcasts] = useState([]);
-  const [walkDuration, setWalkDuration] = useState(""); 
+  const [walkDuration, setWalkDuration] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
   const [playlistNameInput, setPlaylistNameInput] = useState("");
   const [landingPage, setLandingPage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [selectLessTime, setSelectLessTime] = useState("");
-  const [authUser, setAuthUser] = useState(null)
+  const [authUser, setAuthUser] = useState(null);
+  const [userData, setUserData] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -36,7 +40,7 @@ function App() {
       setIsLoading(false);
       setSelectLessTime("Please select less time.");
     }
-    
+
     const apiKey = import.meta.env.VITE_API_KEY;
     const baseUrl = "https://listen-api.listennotes.com/api/v2";
     const client = Client({ apiKey });
@@ -56,7 +60,7 @@ function App() {
         published_after: 0,
         only_in: "title,description",
         language: "English",
-        safe_mode: 0,
+        safe_mode: 1,
         unique_podcasts: 0,
         page_size: 10,
       })
@@ -77,7 +81,7 @@ function App() {
     setLandingPage(false);
   };
 
-  useEffect(() => {}, [walkDuration, selectedGenre, handleSubmit]); //let's revisit this. what is even happening in this useEffect. 
+  useEffect(() => {}, [handleSubmit]); //let's revisit this. what is even happening in this useEffect.
 
   const handleWalkDurationChange = (event) => {
     const newValue = event.target.value;
@@ -93,6 +97,19 @@ function App() {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
         setAuthUser(user);
+        const database = getDatabase();
+        const userUid = user.uid;
+        const userRef = ref(database, `users/${userUid}/podcasts`);
+
+        onValue(userRef, (snapshot) => {
+          const data = snapshot.val();
+          const renderUserData = [];
+
+          for (let key in data) {
+            renderUserData.push(data[key]);
+          }
+          setUserData(renderUserData);
+        });
       } else {
         setAuthUser(null);
       }
@@ -102,6 +119,8 @@ function App() {
     };
   }, []);
 
+  // console.log(userData);
+
   return (
     <>
       <div className="App">
@@ -110,7 +129,7 @@ function App() {
             path="/"
             element={
               <>
-                <Header authUser={authUser}setLandingPage={setLandingPage}/>
+                <Header authUser={authUser} setLandingPage={setLandingPage} />
                 <SideBar
                   walkDuration={walkDuration}
                   handleWalkDurationChange={handleWalkDurationChange}
@@ -125,7 +144,7 @@ function App() {
                   handleSubmit={handleSubmit}
                   errorMessage={errorMessage}
                 />
-                { landingPage ? (
+                {landingPage ? (
                   <LandingPage />
                 ) : selectLessTime ? (
                   <div className="errorMsg">
@@ -146,10 +165,15 @@ function App() {
                     playlistNameInput={playlistNameInput}
                   />
                 )}
+                <Spotify />
                 <Footer />
               </>
             }
           ></Route>
+          <Route
+            path="/library"
+            element={<Library userData={userData} authUser={authUser} />}
+          />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="*" element={<ErrorPage />} />

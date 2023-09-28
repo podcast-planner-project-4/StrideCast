@@ -1,11 +1,13 @@
-const Podcast = ({ podcast }) => {
+import React from "react";
+import DOMPurify from "dompurify";
 
-  const maxLength = 200;
+const Podcast = ({ podcast, htmlContent }) => {
+  const maxLength = 250;
   const trimmedDesc =
     podcast.description_original.length > maxLength
       ? podcast.description_original.substring(0, maxLength) + "..."
       : podcast.description_original;
-
+  const sanitizedTrimmedDesc = DOMPurify.sanitize(trimmedDesc);
   return (
     <li key={podcast.id} className="podcastContainer">
       <div className="podcastCoverContainer">
@@ -14,7 +16,9 @@ const Podcast = ({ podcast }) => {
           src={podcast.thumbnail}
           alt={`${podcast.title_original} cover art`}
         ></img>
-        <a href={podcast.link} target="_blank"><i class="fa-solid fa-link podcastLink" title="Visit website"></i></a>
+        <a href={podcast.link} target="_blank">
+          <i class="fa-solid fa-link podcastLink" title="Visit website"></i>
+        </a>
       </div>
       <div className="podcastInfoContainer">
         <div className="podcastInfoTop">
@@ -29,7 +33,11 @@ const Podcast = ({ podcast }) => {
           </div>
           <i className="fa-solid fa-bars faDragIcon" title="Drag and drop"></i>
         </div>
-        <p className="podcastDescription">{trimmedDesc}</p>
+        <p
+          className="podcastDescription"
+          dangerouslySetInnerHTML={{ __html: sanitizedTrimmedDesc }}
+        ></p>
+
         <audio controls>
           <source src={podcast.audio} type="audio/mpeg" />
           Your browser does not support the audio element.
