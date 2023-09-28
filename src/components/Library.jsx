@@ -3,11 +3,12 @@ import Podcast from "./Podcast";
 import Header from "./Header";
 import SideBarLibrary from "./SideBarLibrary";
 import Footer from "./Footer";
+import APILoadingState from "./APILoadingState";
 import { useState } from "react";
 import { getDatabase, ref, update } from "firebase/database";
 
 const Library = ({ userData, authUser }) => {
-
+  const [loading, setLoading] = useState(false)
   const [library, setLibrary] = useState(null);
 
   const handleDeleteList = () => {
@@ -18,17 +19,27 @@ const Library = ({ userData, authUser }) => {
   }
     
   useEffect(()=> {
-    if(userData){
+    setLoading(true)
+    if(userData && userData.length > 0){
     setLibrary(true);
-  }
-  },[]);
+    } else { 
+      setLibrary(false);
+    }
+
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000)
+  },[userData]);
   
+  console.log(userData)
 
   return (
     <div className="libraryMainContainer">
       <Header authUser={authUser} />
       <SideBarLibrary />
-      {library && userData ?  (<div className="libraryContainer">
+      { loading ? <APILoadingState/> 
+      : 
+        library && userData.length > 0 ?  (<div className="libraryContainer">
         <div className="libraryContainerHeader">
           <h2>Your Playlist</h2>
           <i
@@ -42,7 +53,10 @@ const Library = ({ userData, authUser }) => {
             return <Podcast podcast={podcast} />;
           })}
         </ul>
-      </div>) : <p className="delete">Your Playlist is empty</p>}
+      </div>) : <p className="delete">Your Playlist is empty</p>
+      
+      }
+      
       <Footer />
     </div>
   );

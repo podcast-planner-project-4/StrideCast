@@ -5,6 +5,7 @@ import { ref, getDatabase, update } from "firebase/database";
 
 const Playlist = ({ podcasts, playlistNameInput, authUser }) => {
   const [favourited, setFavourited] = useState("");
+  const [shuffledPodcasts, setShuffledPodcasts] = useState([...podcasts]);
 
   const handleFavourite = () => {
     setFavourited(!favourited);
@@ -21,12 +22,19 @@ const Playlist = ({ podcasts, playlistNameInput, authUser }) => {
     }
   };
 
+const handleShuffle = () => { 
+  const shuffled = [...podcasts]
+  shuffled.sort(() => Math.random() - 0.5)
+  setShuffledPodcasts(shuffled)
+}
+
+
   return (
     <div className="playlistContainer">
       <div className="playlistHeader">
         <div className="playlistNameShuffle">
           <h2>{playlistNameInput}</h2>
-          <button className="faShuffleBtn">
+          <button onClick={handleShuffle} className="faShuffleBtn">
             <i
               className="fa-solid fa-shuffle faShuffleIcon"
               title="Shuffle playlist"
@@ -50,7 +58,7 @@ const Playlist = ({ podcasts, playlistNameInput, authUser }) => {
         </div>
       </div>
       <ul>
-        {podcasts.map((podcast) => {
+        {shuffledPodcasts.map((podcast) => {
           return <Podcast podcast={podcast} />;
         })}
       </ul>
