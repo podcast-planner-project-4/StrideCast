@@ -66,6 +66,7 @@ function App() {
       })
       .then((response) => {
         setIsLoading(false);
+        console.log(response.data.results)
         if (response.data.results.length === 0) {
           setErrorMessage("Sorry! No podcasts found. Please try again.");
         } else {
@@ -81,7 +82,6 @@ function App() {
     setLandingPage(false);
   };
 
-  useEffect(() => {}, [handleSubmit]); //let's revisit this. what is even happening in this useEffect.
 
   const handleWalkDurationChange = (event) => {
     const newValue = event.target.value;

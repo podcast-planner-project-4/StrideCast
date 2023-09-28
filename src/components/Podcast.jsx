@@ -2,13 +2,17 @@ import React from "react";
 import DOMPurify from "dompurify";
 
 const Podcast = ({ podcast, htmlContent }) => {
+
   const maxLength = 250;
   const trimmedDesc =
     podcast.description_original.length > maxLength
       ? podcast.description_original.substring(0, maxLength) + "..."
       : podcast.description_original;
   const sanitizedTrimmedDesc = DOMPurify.sanitize(trimmedDesc);
+
+
   return (
+    
     <li key={podcast.id} className="podcastContainer">
       <div className="podcastCoverContainer">
         <img
@@ -44,7 +48,9 @@ const Podcast = ({ podcast, htmlContent }) => {
         </audio>
       </div>
     </li>
+    
   );
+  
 };
 
 export default Podcast;
