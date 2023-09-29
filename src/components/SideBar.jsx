@@ -17,18 +17,17 @@ const SideBar = ({
       (keyCode < 37 || keyCode > 40) &&
       (keyCode <= 96 || keyCode >= 105)
     ) {
-      event.preventDefault(); // Prevent non-digit input
+      event.preventDefault();
     }
   };
-  // Can We simplify this code using the input
 
   return (
     <>
       <div className="sidebar wrapper">
-        <h1>Podcast Planner</h1>
+        <h1>Your podcast companion on the move!</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit! Blah blah
-          blah blah blah.
+          Simply enter the duration of your walk and select your preferred
+          podcast genre to get personalized podcast recommendations.
         </p>
         <div>
           <form className="sidebarNav" onSubmit={handleSubmit}>

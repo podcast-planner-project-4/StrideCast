@@ -11,7 +11,7 @@ const Playlist = ({ podcasts, playlistNameInput, authUser }) => {
     setFavourited(!favourited);
     if (authUser) {
       const userUid = authUser.uid;
-      console.log(userUid);
+
       const database = getDatabase();
       const userRef = ref(database, `users/${userUid}/`);
       if (!favourited) {
@@ -22,12 +22,11 @@ const Playlist = ({ podcasts, playlistNameInput, authUser }) => {
     }
   };
 
-const handleShuffle = () => { 
-  const shuffled = [...podcasts]
-  shuffled.sort(() => Math.random() - 0.5)
-  setShuffledPodcasts(shuffled)
-}
-
+  const handleShuffle = () => {
+    const shuffled = [...podcasts];
+    shuffled.sort(() => Math.random() - 0.5);
+    setShuffledPodcasts(shuffled);
+  };
 
   return (
     <div className="playlistContainer">
@@ -59,7 +58,7 @@ const handleShuffle = () => {
       </div>
       <ul>
         {shuffledPodcasts.map((podcast) => {
-          return <Podcast podcast={podcast} />;
+          return <Podcast podcast={podcast} key={podcast.id} />;
         })}
       </ul>
     </div>

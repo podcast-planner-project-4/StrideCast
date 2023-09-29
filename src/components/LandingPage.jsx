@@ -1,4 +1,3 @@
-import StrideCast_purple from "../assets/StrideCast_purple.png";
 import { useState, useEffect } from "react";
 import { Client } from "podcast-api";
 
@@ -21,7 +20,6 @@ const LandingPage = () => {
       })
       .then((response) => {
         setTopPodcasts(response.data.podcasts);
-        console.log(topPodcasts);
       })
       .catch((error) => {
         console.log(error);
@@ -35,8 +33,8 @@ const LandingPage = () => {
         {topPodcasts.map((podcast) => {
           return (
             <li key={podcast.id} className="bestPodcastContainer">
-              <div className="bestPocastImgContainer">
-                <img src={podcast.thumbnail}></img>
+              <div className="bestPodcastImgContainer">
+                <img src={podcast.thumbnail} alt={podcast.title}></img>
                 <a href={podcast.website} target="_blank">
                   <i
                     className="fa-solid fa-link faBestLink"

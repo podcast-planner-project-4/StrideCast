@@ -8,7 +8,7 @@ import { useState } from "react";
 import { getDatabase, ref, update } from "firebase/database";
 
 const Library = ({ userData, authUser }) => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true);
   const [library, setLibrary] = useState(null);
 
   const handleDeleteList = () => {
@@ -16,47 +16,46 @@ const Library = ({ userData, authUser }) => {
     const userUid = authUser.uid;
     const playlistRef = ref(database, `users/${userUid}`);
     update(playlistRef, { playlistName: null, podcasts: null });
-  }
-    
-  useEffect(()=> {
-    setLoading(true)
-    if(userData && userData.length > 0){
-    setLibrary(true);
-    } else { 
+  };
+
+  useEffect(() => {
+    if (userData && userData.length > 0) {
+      setLibrary(true);
+    } else {
       setLibrary(false);
     }
 
     setTimeout(() => {
-      setLoading(false)
-    }, 1000)
-  },[userData]);
-  
-  console.log(userData)
+      setLoading(false);
+    }, 1000);
+  }, [userData]);
 
   return (
     <div className="libraryMainContainer">
       <Header authUser={authUser} />
       <SideBarLibrary />
-      { loading ? <APILoadingState/> 
-      : 
-        library && userData.length > 0 ?  (<div className="libraryContainer">
-        <div className="libraryContainerHeader">
-          <h2>Your Playlist</h2>
-          <i
-            className="fa-solid fa-trash-can faRemove"
-            title="Delete playlist"
-            onClick={handleDeleteList}
-          ></i>
+      {loading ? (
+        <APILoadingState />
+      ) : library && userData.length > 0 ? (
+        <div className="libraryContainer">
+          <div className="libraryContainerHeader">
+            <h2>Your Playlist</h2>
+            <i
+              className="fa-solid fa-trash-can faRemove"
+              title="Delete playlist"
+              onClick={handleDeleteList}
+            ></i>
+          </div>
+          <ul>
+            {userData.map((podcast) => {
+              return <Podcast podcast={podcast} />;
+            })}
+          </ul>
         </div>
-        <ul>
-          {userData.map((podcast) => {
-            return <Podcast podcast={podcast} />;
-          })}
-        </ul>
-      </div>) : <p className="delete">Your Playlist is empty</p>
-      
-      }
-      
+      ) : (
+        <p className="delete">Your Playlist is empty</p>
+      )}
+
       <Footer />
     </div>
   );

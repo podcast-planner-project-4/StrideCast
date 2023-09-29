@@ -66,7 +66,7 @@ function App() {
       })
       .then((response) => {
         setIsLoading(false);
-        console.log(response.data.results)
+        console.log(response.data.results);
         if (response.data.results.length === 0) {
           setErrorMessage("Sorry! No podcasts found. Please try again.");
         } else {
@@ -82,12 +82,10 @@ function App() {
     setLandingPage(false);
   };
 
-
   const handleWalkDurationChange = (event) => {
     const newValue = event.target.value;
     if (newValue.startsWith("0")) {
       event.preventDefault();
-      console.log("hello");
     } else {
       setWalkDuration(newValue);
     }
@@ -118,8 +116,6 @@ function App() {
       listen();
     };
   }, []);
-
-  // console.log(userData);
 
   return (
     <>
