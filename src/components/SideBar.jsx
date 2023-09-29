@@ -14,10 +14,8 @@ const SideBar = ({
       keyCode !== 8 &&
       keyCode !== 13 &&
       keyCode !== 9 &&
-      keyCode > 37 &&
-      keyCode < 40 &&
-      keyCode >= 96 &&
-      keyCode <= 105
+      (keyCode < 37 || keyCode > 40) &&
+      (keyCode <= 96 || keyCode >= 105)
     ) {
       event.preventDefault(); // Prevent non-digit input
     }

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, AuthErrorCodes } from "firebase/auth";
 import { useState } from "react";
 import { auth, database } from "../Firebase";
 import { set, ref } from "firebase/database";
@@ -36,7 +36,13 @@ function SignUp() {
             });
         })
         .catch((error) => {
+          console.log(error.code)
           console.log(error);
+          if (error.code === AuthErrorCodes.EMAIL_EXISTS) { 
+            setPasswordErrorMessage('Email already in use. Please use another email.')
+          } else { 
+            console.log('error in creating user', error)
+          }
         });
     } else {
       setPasswordErrorMessage(
