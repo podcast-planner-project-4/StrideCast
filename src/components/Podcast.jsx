@@ -1,8 +1,7 @@
 import React from "react";
 import DOMPurify from "dompurify";
 
-const Podcast = ({ podcast, htmlContent }) => {
-
+const Podcast = ({ podcast }) => {
   const maxLength = 250;
   const trimmedDesc =
     podcast.description_original.length > maxLength
@@ -10,9 +9,7 @@ const Podcast = ({ podcast, htmlContent }) => {
       : podcast.description_original;
   const sanitizedTrimmedDesc = DOMPurify.sanitize(trimmedDesc);
 
-
   return (
-    
     <li key={podcast.id} className="podcastContainer">
       <div className="podcastCoverContainer">
         <img
@@ -21,7 +18,7 @@ const Podcast = ({ podcast, htmlContent }) => {
           alt={`${podcast.title_original} cover art`}
         ></img>
         <a href={podcast.link} target="_blank">
-          <i class="fa-solid fa-link podcastLink" title="Visit website"></i>
+          <i className="fa-solid fa-link podcastLink" title="Visit website"></i>
         </a>
       </div>
       <div className="podcastInfoContainer">
@@ -35,7 +32,6 @@ const Podcast = ({ podcast, htmlContent }) => {
               </div>
             </div>
           </div>
-          <i className="fa-solid fa-bars faDragIcon" title="Drag and drop"></i>
         </div>
         <p
           className="podcastDescription"
@@ -48,9 +44,7 @@ const Podcast = ({ podcast, htmlContent }) => {
         </audio>
       </div>
     </li>
-    
   );
-  
 };
 
 export default Podcast;

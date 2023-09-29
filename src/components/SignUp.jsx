@@ -36,12 +36,12 @@ function SignUp() {
             });
         })
         .catch((error) => {
-          console.log(error.code)
-          console.log(error);
-          if (error.code === AuthErrorCodes.EMAIL_EXISTS) { 
-            setPasswordErrorMessage('Email already in use. Please use another email.')
-          } else { 
-            console.log('error in creating user', error)
+          if (error.code === AuthErrorCodes.EMAIL_EXISTS) {
+            setPasswordErrorMessage(
+              "Email already in use. Please use another email."
+            );
+          } else {
+            console.log("error in creating user", error);
           }
         });
     } else {
