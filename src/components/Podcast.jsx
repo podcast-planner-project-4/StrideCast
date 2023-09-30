@@ -2,7 +2,7 @@ import React from "react";
 import DOMPurify from "dompurify";
 
 const Podcast = ({ podcast }) => {
-  const maxLength = 250;
+  const maxLength = 175;
   const trimmedDesc =
     podcast.description_original.length > maxLength
       ? podcast.description_original.substring(0, maxLength) + "..."
@@ -23,13 +23,11 @@ const Podcast = ({ podcast }) => {
       </div>
       <div className="podcastInfoContainer">
         <div className="podcastInfoTop">
-          <div className="podcastInfoTopLeft">
-            <div>
-              <h3 className="podcastTitle">{podcast.title_original}</h3>
-              <div className="podcastAuthorContainer">
-                <i className="fa-solid fa-podcast faPodcast"></i>
-                <p className="podcastAuthor">{podcast.publisher_original}</p>
-              </div>
+          <div>
+            <h3 className="podcastTitle">{podcast.title_original}</h3>
+            <div className="podcastAuthorContainer">
+              <i className="fa-solid fa-podcast faPodcast"></i>
+              <p className="podcastAuthor">{podcast.publisher_original}</p>
             </div>
           </div>
         </div>

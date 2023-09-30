@@ -26,8 +26,7 @@ const SideBar = ({
       <div className="sidebar wrapper">
         <h1>Your podcast companion on the move!</h1>
         <p>
-          Simply enter the duration of your walk and select your preferred
-          podcast genre to get personalized podcast recommendations.
+          Simply enter the duration of your walk and choose your podcast vibe to get personalized podcast recommendations.
         </p>
         <div>
           <form className="sidebarNav" onSubmit={handleSubmit}>

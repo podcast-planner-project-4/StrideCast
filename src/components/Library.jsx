@@ -53,7 +53,7 @@ const Library = ({ userData, authUser }) => {
           </ul>
         </div>
       ) : (
-        <p className="delete">Your Playlist is empty</p>
+        <p className="deletePlaylist">Your library is empty.</p>
       )}
 
       <Footer />
