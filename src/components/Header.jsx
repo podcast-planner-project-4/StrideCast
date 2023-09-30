@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { auth } from "../Firebase";
 import { signOut } from "firebase/auth";
 import StrideCast_purple from "../assets/StrideCast_purple.png";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ authUser, setLandingPage }) => {
   const signOutUser = () => {
@@ -13,6 +14,13 @@ const Header = ({ authUser, setLandingPage }) => {
       .catch((error) => console.log(error));
   };
 
+  const navigate = useNavigate();
+
+  const handleForcedRefresh = () => {
+    navigate("/");
+    window.location.reload();
+  }
+
   return (
     <>
       <header>
@@ -20,23 +28,25 @@ const Header = ({ authUser, setLandingPage }) => {
           <Link
             to="/"
             className="logoLink"
+            onClick={handleForcedRefresh}
             style={{ color: "inherit", textDecoration: "inherit" }}
           >
             <div className="logoContainer">
               <div>
                 <img className="logo" src={StrideCast_purple}></img>
               </div>
-              <p className="logoWord">StrideCast</p>
+              <p>StrideCast</p>
             </div>
           </Link>
           {authUser ? (
             <div className="logOutContainer">
               <Link
                 to="/library"
+                className="yourLibraryLink"
                 style={{ color: "inherit", textDecoration: "inherit" }}
               >
-                <div className="yourPlaylistContainer">
-                  <i className="fa-solid fa-thumbtack faYourLibrary"></i>
+                <div className="yourLibraryContainer">
+                  <i className="fa-solid fa-thumbtack faLibrary"></i>
                   <p>YOUR LIBRARY</p>
                 </div>
               </Link>

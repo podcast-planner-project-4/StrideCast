@@ -120,11 +120,9 @@ function SignUp() {
           .
         </p>
       </div>
-      <p className="homeLink">
-        <Link to="/" className="returnHome">
-          Return home
-        </Link>
-      </p>
+      <Link to="/" className="returnHome"><p>
+          Return home</p>
+      </Link>
     </div>
   );
 }

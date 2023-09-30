@@ -248,14 +248,17 @@ ul {
 }
 
 .App {
-  height: 350vh;
   width: 100vw;
   background-color: var(--priBlack);
 }
 
+body {
+  background-color: black;
+}
+
 header {
   width: 100vw;
-  height: 8vh;
+  height: 9vh;
   background-color: var(--secBlack);
   display: flex;
   position: fixed;
@@ -275,45 +278,34 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-family: "Raleway", sans-serif;
-  letter-spacing: 0.025rem;
-  font-weight: 600;
-  color: var(--white);
+  letter-spacing: 0.05rem;
+  font-weight: 650;
 }
 
 .logo {
-  width: 50px;
-  height: 50px;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
   display: flex;
   justify-content: center;
   align-content: center;
   margin-right: 0.5rem;
-  cursor: pointer;
-}
-
-.logoWord {
-  font-size: 1.55rem;
-}
-
-.logoWord:hover {
-  text-decoration: none;
 }
 
 .topNavBtns,
 .logOutContainer {
-  color: var(--white);
   display: flex;
   align-items: center;
 }
 
 .topNavBtns button,
 .logOutContainer button {
-  padding: 0.95rem 1.3rem;
+  padding: 0.95rem 1.5rem;
   border-radius: 2rem;
   border: none;
-  letter-spacing: 0.025rem;
+  letter-spacing: 0.04rem;
   cursor: pointer;
   font-weight: 600;
 }
@@ -348,7 +340,7 @@ header {
 }
 
 .logOutBtn {
-  margin-left: 2rem;
+  margin-left: 1.5rem;
 }
 
 .logOutContainer p {
@@ -359,14 +351,20 @@ header {
 .sidebar,
 .sideBarLibraryContainer {
   width: 400px;
-  height: 92vh;
+  height: 91vh;
   background-color: var(--triBlack);
   position: fixed;
-  top: 8vh;
+  top: 9vh;
   z-index: 1;
-  padding: 0 3.75rem;
-  padding-top: 3rem;
-  color: var(--white);
+  padding: 0 3.5rem;
+  padding-top: 2.5rem;
+}
+
+.sideBarLibraryContainer {
+  background-image: url(./assets/sidebarImg.png);
+  background-repeat: no-repeat;
+  background-position: 50% center;
+  
 }
 
 .sidebarNav {
@@ -376,39 +374,37 @@ header {
 }
 
 h1 {
-  font-weight: 500;
-  font-size: 1.4rem;
-  padding-bottom: 0.75rem;
+  font-weight: 600;
+  font-size: 1.75rem;
+  padding-bottom: 1rem;
+  letter-spacing: 0.05rem;
   font-family: "Raleway", sans-serif;
 }
 
 .sidebar p {
   color: rgb(189, 189, 189);
+  letter-spacing: 0.01rem;
+  line-height: 1.35rem;
 }
 
 .sidebar label {
   margin-bottom: 0.5rem;
+  letter-spacing: 0.01rem;
   color: var(--lightgrey);
 }
 
 .sidebar input {
-  padding: 1rem 0 1rem 0.5rem;
-  color: var(--white);
+  padding: 1rem 0 1rem 0.75rem;
   border-radius: 6px;
   margin-bottom: 1rem;
   background-color: var(--priBlack);
   letter-spacing: 0.03rem;
-  font-family: "Poppins", sans-serif;
   font-size: 0.9rem;
   outline: none;
 }
 
 .sidebar input:focus {
   border: 1px solid var(--white);
-}
-
-.sidebar p {
-  line-height: 1.25rem;
 }
 
 /*This code is to hide the default arrows in the number input. When hidding, you can use your own arrows from font-awesome.
@@ -424,6 +420,14 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 
+.sidebarNav input::placeholder {
+  color: var(--white);
+  opacity: 1;
+  letter-spacing: 0.03rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+}
+
 select {
   padding: 1rem 0 1rem 0.5rem;
   background-color: var(--priBlack);
@@ -431,7 +435,7 @@ select {
   color: var(--white);
   border-radius: 6px;
   margin-bottom: 1rem;
-  letter-spacing: 0.03rem;
+  letter-spacing: 0.04rem;
   font-family: "Poppins", sans-serif;
   font-size: 0.9rem;
 }
@@ -439,13 +443,12 @@ select {
 .faSearch {
   padding-right: 0.25rem;
 }
+
 .sidebarNav button {
   background-color: var(--purpleBtn);
-  color: var(--priBlue);
   border: none;
   padding: 1rem 1.25rem;
   border-radius: 6px;
-  cursor: pointer;
   margin-top: 1.5rem;
   letter-spacing: 0.1rem;
   position: relative;
@@ -461,21 +464,18 @@ select {
   background-color: var(--purpleBtn);
 }
 
-.playlistContainer {
-  padding-top: 13vh;
-  margin-left: 350px;
-  background: linear-gradient(rgba(50, 4, 80, 0.55), var(--secBlack) 35%);
-  height: 100%;
-}
-
 footer {
   position: fixed;
-  bottom: 1%;
+  bottom: 2%;
   z-index: 5;
   width: 400px;
   padding: 0 3.75rem;
   font-size: 0.7rem;
   color: var(--lightgrey);
+}
+
+footer p {
+  letter-spacing: 0.02rem;
 }
 
 footer a {
@@ -495,20 +495,93 @@ footer a:hover {
   padding-top: 0.25rem;
 }
 
-.podcastContainer {
-  margin: 1.5rem auto;
-  background-color: var(--triBlack);
-  border-radius: 15px;
+.playlistContainer {
+  margin-left: 360px;
+  width: calc(100vw - 360px);
+  padding-top: 15vh; 
+  padding-bottom: 5rem;
+  background: linear-gradient(rgba(50, 4, 80, 0.55), var(--secBlack) 35%);
+}
+
+.playlistHeader {
   display: flex;
-  padding: 1.5rem;
+  align-content: center;
+  justify-content: space-between;
   width: 1000px;
+  margin: 0 auto;
+  padding-left: 1.4rem;
+}
+
+.playlistHeader h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: "Raleway", sans-serif;
+  letter-spacing: 0.04rem;
+}
+
+.playlistNameShuffle {
+  display: flex;
+  align-items: center;
+}
+
+.faShuffleBtn {
+  background-color: transparent;
+  border: none;
   cursor: pointer;
+  margin-left: 1rem;
+}
+
+.faShuffleIcon {
+  color: var(--lightPurple);
+  font-size: 1.25rem;
+  transform: all 0.25s;
+}
+
+.faShuffleIcon:hover {
+  font-size: 1.35rem;
+}
+
+.savePlaylistContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.favouriteIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--lightPurple);
+  cursor: pointer;
+  font-size: 1.5rem;
   transition: all 0.25s;
+}
+
+.favouriteIcon:hover {
+  font-size: 1.6rem;
+}
+
+.favouriteIcon:active {
+  font-size: 1.75rem;
+}
+
+.savePlaylistLink {
+  text-decoration: none;
+}
+
+.podcastContainer {
+  width: 1000px;
+  background-color: var(--triBlack);
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
 }
 
 .podcastContainer:hover {
   background-color: #1e1e1e;
-  opacity: 0.9;
 }
 
 .podcastContainer:hover .podcastLink {
@@ -516,13 +589,19 @@ footer a:hover {
 }
 
 .podcastCoverContainer {
-  height: 200px;
-  width: 200px;
+  height: 100%;
+  width: 225px;
   position: relative;
 }
 
 .podcastCoverContainer a {
   color: var(--triBlack);
+}
+
+.podcastCover {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
 }
 
 .podcastLink {
@@ -532,7 +611,7 @@ footer a:hover {
   border-radius: 25px;
   background-color: var(--lightPurple);
   color: var(--priBlack);
-  box-shadow: 0 0 10px rgba(24, 24, 24, 0.7);
+  box-shadow: 0 0 15px rgba(24, 24, 24, 0.75);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -549,19 +628,13 @@ footer a:hover {
   border-radius: 27px;
 }
 
-.podcastCover {
-  width: 100%;
-  height: 100%;
-  border-radius: 6px;
-}
-
 .podcastInfoContainer {
   height: 200px;
   width: 800px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding-left: 2rem;
+  padding-left: 1.5rem;
   color: rgb(226, 226, 226);
 }
 
@@ -570,16 +643,6 @@ footer a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.podcastInfoTopLeft {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.playBtnContainer a {
-  text-decoration: none;
 }
 
 .podcastTitle {
@@ -601,81 +664,29 @@ footer a:hover {
 }
 
 .faPodcast {
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: var(--purple);
 }
 
 .podcastDescription {
   color: rgb(160, 160, 160);
-  padding-top: 0.25rem;
-  width: 90%;
-  font-size: 0.925rem;
-}
-
-.podcastLength {
-  display: flex;
-  padding-top: 1rem;
-  color: grey;
-  font-size: 0.9rem;
-}
-
-h2 {
-  font-size: 1.25rem;
-  font-family: "Raleway", sans-serif;
-}
-
-.faDragIcon {
-  align-self: flex-start;
-  color: var(--purple);
-  cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.25s;
-}
-
-.faDragIcon:hover {
-  font-size: 1.15rem;
-}
-
-.playlistHeader {
-  margin: 0 auto;
-  display: flex;
-  width: 1000px;
-  justify-content: space-between;
-  align-content: center;
-}
-
-.playlistHeader h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  font-family: "Raleway", sans-serif;
-  letter-spacing: 0.025rem;
-  margin-left: 2rem;
-}
-
-.savePlaylistContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 0.85rem;
+  letter-spacing: 0.025rem;
 }
 
-.favouriteIcon {
-  margin-left: 0.75rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--lightPurple);
-  cursor: pointer;
-  font-size: 1.5rem;
-  transition: all 0.25s;
+audio {
+  all: revert;
+  height: 2rem;
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  border-radius: 1rem;
+  opacity: 1;
 }
 
-.favouriteIcon:hover {
-  font-size: 1.6rem;
-}
-
-.favouriteIcon:active {
-  font-size: 1.75rem;
+audio::-webkit-media-controls-panel,
+video::-webkit-media-controls-panel {
+  background-color: #f0dbfe;
 }
 
 .spinnerContainer {
@@ -685,7 +696,7 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 8vh;
+  padding-top: 9vh;
   margin-left: 400px;
   position: fixed;
   background: linear-gradient(135deg, var(--triBlack), var(--purple) 500%);
@@ -701,8 +712,8 @@ h2 {
 }
 
 .loadingText {
-  font-size: 1rem;
   padding-top: 1rem;
+  letter-spacing: 0.04rem;
 }
 
 @keyframes spin {
@@ -714,51 +725,6 @@ h2 {
   }
 }
 
-.playlistNameShuffle {
-  display: flex;
-  align-items: center;
-}
-
-.playlistNameShuffle h2 {
-  font-family: "Poppins", sans-serif;
-  letter-spacing: 0.03rem;
-  font-weight: 500;
-}
-
-.faShuffleBtn {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  margin-left: 1rem;
-  /* position: relative; */
-}
-
-.faShuffleIcon {
-  color: var(--lightPurple);
-  font-size: 1.25rem;
-  transform: all 0.25s;
-}
-
-.faShuffleIcon:hover {
-  font-size: 1.35rem;
-}
-
-audio {
-  all: revert;
-  height: 2rem;
-  position: relative;
-  z-index: 0;
-  width: 100%;
-  border-radius: 1rem;
-  background-color: #f0dbfe;
-  opacity: 1;
-}
-
-audio::-webkit-media-controls-panel,
-video::-webkit-media-controls-panel {
-  background-color: #f0dbfe;
-}
-
 .errorMsg {
   width: calc(100vw - 400px);
   margin-left: 400px;
@@ -767,24 +733,44 @@ video::-webkit-media-controls-panel {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  letter-spacing: 0.04rem;
   position: fixed;
   font-size: 1rem;
   padding: 3.2rem 0 0 3.2rem;
   background: linear-gradient(135deg, var(--triBlack), var(--purple) 500%);
 }
 
-.signUpLink {
-  color: var(--white);
-  text-decoration: none;
+.errorIcon {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  font-size: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--purpleBtn);
+  background-color: var(--secBlack);
+  margin-bottom: 1rem;
 }
 
-.logInLink {
-  color: var(--priBlue);
-  text-decoration: none;
+.formPage {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--triBlack);
 }
 
-.savePlaylistLink {
-  text-decoration: none;
+.formPage header {
+  position: fixed;
+  top: 0;
 }
 
 .formContainer {
@@ -828,19 +814,6 @@ form input::placeholder {
   letter-spacing: 0.03rem;
 }
 
-.sidebarNav input::placeholder {
-  color: var(--white);
-  opacity: 1;
-  letter-spacing: 0.03rem;
-  font-family: "Poppins", sans-serif;
-  font-size: 0.9rem;
-}
-.passwordContainer,
-.confirmPasswordContainer {
-  margin-top: 1.5rem;
-  background-color: var(--priBlack);
-}
-
 .passwordContainer input,
 .confirmPasswordContainer input {
   border-radius: 4px 0 0 4px;
@@ -852,6 +825,7 @@ form input::placeholder {
   justify-content: space-around;
   align-items: center;
   border-radius: 4px;
+  margin-top: 1.5rem;
   background-color: var(--priBlack);
 }
 
@@ -875,26 +849,6 @@ form input::placeholder {
   color: var(--purpleBtn);
 }
 
-.formPage {
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--triBlack);
-}
-
-.formPage header {
-  position: fixed;
-  top: 0;
-}
-
 form button {
   margin: 1rem 0;
   padding: 1.2rem 0;
@@ -913,13 +867,6 @@ form button {
   text-align: center;
   font-size: 0.8rem;
   letter-spacing: 0.04rem;
-  color: var(--lightgrey);
-}
-
-.homeLink {
-  font-size: 0.7rem;
-  margin-top: 2rem;
-  cursor: pointer;
   color: var(--lightgrey);
 }
 
@@ -946,9 +893,13 @@ form button {
   position: fixed;
   top: 0;
   padding: 0 3.5rem;
+  border: 1px solid red;
 }
 
 .returnHome {
+  font-size: 0.7rem;
+  margin-top: 2rem;
+  cursor: pointer;
   color: rgb(160, 160, 160);
   text-decoration: none;
   transition: all 0.25s;
@@ -971,27 +922,13 @@ form button {
   text-decoration: underline;
 }
 
-.errorIcon {
-  color: var(--purpleBtn);
-  font-size: 5rem;
-  padding-bottom: 1rem;
-  width: 200px;
-  height: 200px;
-  background-color: var(--secBlack);
-  border-radius: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
 .formErrorMsg {
   padding: 2rem 0 1rem;
   color: grey;
 }
 
 .faUser,
-.faYourLibrary {
+.faLibrary {
   font-size: 1.15rem;
   margin-right: 0.5rem;
   color: var(--lightPurple);
@@ -1006,39 +943,44 @@ form button {
 }
 
 .logOutContainer {
-  width: calc(100vw - 520px);
+  width: calc(100vw - 510px);
   display: flex;
   justify-content: space-between;
 }
 
 .logOutUserContainer,
-.yourPlaylistContainer {
+.yourLibraryContainer {
   display: flex;
   align-items: center;
 }
 
 .logOutUserContainer p,
-.yourPlaylistContainer p {
+.yourLibraryContainer p {
   color: rgb(160, 160, 160);
   font-weight: 500;
   letter-spacing: 0.015rem;
 }
 
-.yourPlaylistLink {
+.yourLibraryLink {
   cursor: pointer;
   transition: all 0.5s;
 }
 
-.yourPlaylistLink p:hover {
+.yourLibraryLink p {
+  letter-spacing: 0.06rem;
+}
+
+.yourLibraryLink p:hover {
   color: var(--white);
 }
 
 .landingPageContainer {
   padding-top: 13.5vh;
-  margin-left: 390px;
+  padding-bottom: 5rem;
+  margin-left: 400px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
   width: calc(100vw - 390px);
   background: linear-gradient(rgba(50, 4, 80, 0.55), var(--secBlack) 30%);
 }
@@ -1046,7 +988,7 @@ form button {
 .landingPageContainer h2 {
   margin-left: 52px;
   font-size: 1.5rem;
-  letter-spacing: 0.04rem;
+  letter-spacing: 0.06rem;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
 }
@@ -1065,7 +1007,6 @@ form button {
   margin-bottom: 2rem;
   border-radius: 6px;
   box-shadow: 0 0 8px #212121c3;
-  cursor: pointer;
   transition: all 0.5s;
   color: rgb(159, 159, 159);
   font-size: 0.9rem;
@@ -1091,6 +1032,7 @@ form button {
   height: 50px;
   border-radius: 25px;
   background-color: var(--lightPurple);
+  box-shadow: 0 0 15px rgb(24, 24, 24, 0.7);
   font-size: 1.5rem;
   display: flex;
   justify-content: center;
@@ -1120,17 +1062,9 @@ form button {
 
 .libraryContainer {
   background: linear-gradient(rgba(50, 4, 80, 0.55), var(--secBlack) 30%);
-  width: calc(100vw-400px);
   margin-left: 350px;
   padding-top: 13.5vh;
-}
-
-.libraryContainer h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  letter-spacing: 0.025rem;
-  margin-left: 2rem;
+  height: 100%;
 }
 
 .libraryContainerHeader {
@@ -1141,13 +1075,23 @@ form button {
   align-content: center;
 }
 
+.libraryContainerHeader h2 {
+  font-size: 1.5rem;
+  font-weight: 550;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.1rem;
+  margin-left: 1.5rem;
+}
+
 .sideBarSearch,
 .sideBarHome {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   margin-bottom: 1rem;
   cursor: pointer;
   color: rgb(159, 159, 159);
+  letter-spacing: 0.04rem;
+  font-size: 0.9rem;
 }
 
 .sideBarSearch:hover,
@@ -1167,6 +1111,16 @@ form button {
   border: none;
   color: var(--lightPurple);
   font-size: 1.5rem;
+  transition: all 0.25s;
+}
+
+.faRemove:hover {
+  color: var(--purpleBtn);
+  font-size: 1.7rem;
+}
+
+.faRemove:active {
+  color: var(--lightPurple);
 }
 
 .spotifyContainer {
@@ -1224,7 +1178,14 @@ form button {
   opacity: 1;
 }
 
-.delete {
-  font-size: 200px;
-  color: #96ff50;
+.deletePlaylist {
+  height: 100vh;
+  font-size: 1.25rem;
+  background: linear-gradient(rgba(50, 4, 80, 0.55), var(--secBlack) 30%);
+  margin-left: 400px;
+  padding-top: 8.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0.06rem;
 }

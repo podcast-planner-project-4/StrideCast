@@ -24,7 +24,7 @@ const Playlist = ({ podcasts, playlistNameInput, authUser }) => {
 
   const handleShuffle = () => {
     const shuffled = [...podcasts];
-    shuffled.sort(() => Math.random() - 0.5);
+    shuffled.sort(() => Math.random() - 0.3);
     setShuffledPodcasts(shuffled);
   };
 
@@ -51,7 +51,7 @@ const Playlist = ({ podcasts, playlistNameInput, authUser }) => {
             ></i>
           ) : (
             <Link to="/signup" className="savePlaylistLink">
-              <i className="fa-regular fa-heart favouriteIcon"></i>
+              <i className="fa-regular fa-heart favouriteIcon" title="Add to library"></i>
             </Link>
           )}
         </div>
