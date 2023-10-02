@@ -9,7 +9,7 @@ import SideBar from "./components/SideBar";
 import Playlist from "./components/Playlist";
 import Footer from "./components/Footer";
 import Spotify from "./components/Spotify";
-import APILoadingState from "./components/APILoadingState";
+import LoadingState from "./components/LoadingState";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import ErrorPage from "./components/ErrorPage";
@@ -30,6 +30,7 @@ function App() {
   const [authUser, setAuthUser] = useState(null);
   const [userData, setUserData] = useState([]);
 
+  // playlist API call
   const handleSubmit = (event) => {
     event.preventDefault();
     setSelectLessTime("");
@@ -91,6 +92,7 @@ function App() {
     }
   };
 
+  // keeping track og authenticated state
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -148,7 +150,7 @@ function App() {
                     <p>{selectLessTime}</p>
                   </div>
                 ) : isLoading ? (
-                  <APILoadingState />
+                  <LoadingState />
                 ) : errorMessage ? (
                   <div className="errorMsg">
                     <i className="fa-solid fa-triangle-exclamation errorIcon"></i>

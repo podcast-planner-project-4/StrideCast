@@ -4,6 +4,8 @@ import { Client } from "podcast-api";
 const LandingPage = () => {
   const [topPodcasts, setTopPodcasts] = useState([]);
 
+  //best podcasts API call
+
   useEffect(() => {
     const apiKey = import.meta.env.VITE_API_KEY;
     const baseUrl = "https://listen-api.listennotes.com/api/v2";
