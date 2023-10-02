@@ -1,4 +1,4 @@
-const APILoadingState = () => {
+const LoadingState = () => {
   return (
     <div className="spinnerContainer">
       <div className="spinner"></div>
@@ -7,4 +7,4 @@ const APILoadingState = () => {
   );
 };
 
-export default APILoadingState;
+export default LoadingState;

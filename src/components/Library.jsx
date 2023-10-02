@@ -3,7 +3,7 @@ import Podcast from "./Podcast";
 import Header from "./Header";
 import SideBarLibrary from "./SideBarLibrary";
 import Footer from "./Footer";
-import APILoadingState from "./APILoadingState";
+import LoadingState from "./LoadingState";
 import { useState } from "react";
 import { getDatabase, ref, update } from "firebase/database";
 
@@ -25,6 +25,7 @@ const Library = ({ userData, authUser }) => {
       setLibrary(false);
     }
 
+    //setting a timer for the loading state to account for the lag in getting user info from database to render on page
     setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -35,7 +36,7 @@ const Library = ({ userData, authUser }) => {
       <Header authUser={authUser} />
       <SideBarLibrary />
       {loading ? (
-        <APILoadingState />
+        <LoadingState />
       ) : library && userData.length > 0 ? (
         <div className="libraryContainer">
           <div className="libraryContainerHeader">
