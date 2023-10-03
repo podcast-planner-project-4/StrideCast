@@ -49,6 +49,7 @@ function LogIn() {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             ></input>
             <i
               className={`fa-regular ${
